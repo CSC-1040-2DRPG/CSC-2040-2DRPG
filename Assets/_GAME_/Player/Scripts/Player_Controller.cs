@@ -22,6 +22,10 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] Animator _animator;
     [SerializeField] SpriteRenderer _spriteRenderer;
 
+    [SerializeField] float sprintMultiplier = 2f;
+ 
+
+
     #endregion
 
 
@@ -31,6 +35,11 @@ public class Player_Controller : MonoBehaviour
 
     private readonly int _animMoveRight = Animator.StringToHash("Anim_Player_Move_Right");
     private readonly int _animIdleRight = Animator.StringToHash("Anim_Player_Idle_Right");
+
+    private bool _isSprinting;
+    private float finalMoveSpeed;
+     
+
     #endregion
 
     #region Tick
@@ -43,9 +52,9 @@ public class Player_Controller : MonoBehaviour
 
     private void FixedUpdate() //For Physics System
     {
-        finalMoveSpeed = moveSpeed;
+        finalMoveSpeed = _moveSpeed;
         if(_isSprinting) {
-            finalMoveSpeed = moveSpeed * sprintMultiplier;
+            finalMoveSpeed = _moveSpeed * sprintMultiplier;
         }
         MovementUpdate(); //In Physics System
     }
@@ -68,7 +77,7 @@ public class Player_Controller : MonoBehaviour
     #region Movement Logic
         private void MovementUpdate()
     {
-        _rb.velocity = _moveDir.normalized * _moveSpeed * Time.fixedDeltaTime; //.normalized normalizes for diagnoals so its smooth and even
+        _rb.velocity = _moveDir.normalized * finalMoveSpeed * Time.fixedDeltaTime; //.normalized normalizes for diagnoals so its smooth and even
     }
     #endregion
 
