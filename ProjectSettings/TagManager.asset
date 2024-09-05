@@ -47,9 +47,12 @@ TagManager:
   - name: Ground
     uniqueID: 2627499227
     locked: 0
-  - name: Vegetation
+  - name: Paths
+    uniqueID: 3367838207
+    locked: 0
+  - name: Decoration
     uniqueID: 2150873421
     locked: 0
-  - name: Character
+  - name: Player
     uniqueID: 1989671415
     locked: 0

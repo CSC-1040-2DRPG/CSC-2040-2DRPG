@@ -43,6 +43,10 @@ public class Player_Controller : MonoBehaviour
 
     private void FixedUpdate() //For Physics System
     {
+        finalMoveSpeed = moveSpeed;
+        if(_isSprinting) {
+            finalMoveSpeed = moveSpeed * sprintMultiplier;
+        }
         MovementUpdate(); //In Physics System
     }
 
@@ -53,6 +57,8 @@ public class Player_Controller : MonoBehaviour
     {
         _moveDir.x = Input.GetAxisRaw("Horizontal");
         _moveDir.y = Input.GetAxisRaw("Vertical");
+        _isSprinting = Input.GetKey(KeyCode.LeftShift);
+
 
         //print(_moveDir);   --> for testing purposes to make sure game is intaking the Inputs correctly
     }
