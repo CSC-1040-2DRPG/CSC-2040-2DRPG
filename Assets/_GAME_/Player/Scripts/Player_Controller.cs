@@ -15,7 +15,7 @@ public class Player_Controller : MonoBehaviour
 
     #region EditorData
     [Header("Movement Attributes")]      
-    [SerializeField] float _moveSpeed = 50f;  //High because multiplying by time.DeltaTime to accomodate for multiplayer diff fps
+    [SerializeField] float _moveSpeed = 5f;  //High because multiplying by time.DeltaTime to accomodate for multiplayer diff fps
 
     [Header("Dependencies")]
     [SerializeField] Rigidbody2D _rb;
@@ -77,7 +77,10 @@ public class Player_Controller : MonoBehaviour
     #region Movement Logic
         private void MovementUpdate()
     {
-        _rb.velocity = _moveDir.normalized * finalMoveSpeed * Time.fixedDeltaTime; //.normalized normalizes for diagnoals so its smooth and even
+        //.normalized normalizes for diagnoals so its smooth and even
+        //Time.fixedDeltaTime insures player speed is consistant regardless of FPS
+        //multiplying by 50 speeds up the movement so it is equal to what it would be without Time.fixedDeltaTime
+        _rb.velocity = _moveDir.normalized * finalMoveSpeed * (Time.fixedDeltaTime * 50); 
     }
     #endregion
 
