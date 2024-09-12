@@ -35,7 +35,8 @@ public class Player_Controller : MonoBehaviour
 
     private readonly int _animMoveRight = Animator.StringToHash("Anim_Player_Move_Right");
     private readonly int _animIdleRight = Animator.StringToHash("Anim_Player_Idle_Right");
-
+    private readonly int _animMoveUp = Animator.StringToHash("Anim_Player_Move_Up");
+    private readonly int _animMoveDown = Animator.StringToHash("Anim_Player_Move_Down");
     private bool _isSprinting;
     private float finalMoveSpeed;
      
@@ -87,6 +88,17 @@ public class Player_Controller : MonoBehaviour
     #region Animation Logic
     private void CalculateFacingDirection()
     {
+        if (_moveDir.y != 0)
+        {
+            if (_moveDir.y > 0)
+            {
+                _facingDirection = Directions.UP;
+            }
+            if (_moveDir.y < 0)
+            {
+                _facingDirection = Directions.DOWN;
+            }
+        }
         if (_moveDir.x != 0)
         {
             if (_moveDir.x >0) //Moving Right
@@ -112,13 +124,24 @@ public class Player_Controller : MonoBehaviour
             _spriteRenderer.flipX = false;
         }
 
-        if(_moveDir.SqrMagnitude() > 0) // If we're Moving
+        if(_moveDir == Vector2.zero){
+            _animator.speed = 0;
+        } else {
+            _animator.speed = 1;
+        }
+
+
+        if(_moveDir.x != 0) // If we're Moving horizontally
         {
             _animator.CrossFade(_animMoveRight, 0);
         }
-        else
+        else if (_moveDir.y > 0) // If we're Moving up
         {
-            _animator.CrossFade(_animIdleRight, 0);
+            _animator.CrossFade(_animMoveUp, 0);
+        }
+        else if (_moveDir.y < 0) // If we're Moving down
+        {
+            _animator.CrossFade(_animMoveDown, 0);
         }
     }
 
