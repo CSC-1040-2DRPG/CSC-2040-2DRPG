@@ -8,10 +8,10 @@ public class Chase : MonoBehaviour
     public GameObject target;
     public float speed;
 
-    private void onTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player"){
-            speed = +1;
+            speed += 1;
             print("You touched me!");
         }
     }
@@ -21,6 +21,7 @@ public class Chase : MonoBehaviour
     {
 
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+        
     }
 
 
