@@ -158,7 +158,7 @@ public class Player_Controller : MonoBehaviour
     {
 
         MyRigidbody2D = GetComponent<Rigidbody2D>();
-
+       
         if (Instance != null)
         {
             Destroy(this.gameObject);
@@ -167,8 +167,7 @@ public class Player_Controller : MonoBehaviour
 
         //if not than whatever is attached to this script becomes instance
         Instance = this;
-    
-        GameObject.DontDestroyOnLoad(this.gameObject);
 
+        GameObject.DontDestroyOnLoad(this.gameObject);
     }
 }
