@@ -9,6 +9,12 @@ using UnityEngine;
 
 public class Player_Controller : MonoBehaviour
 {
+    private Rigidbody2D MyRigidbody2D;
+
+    // make sure only one player is present after switching scenes
+    public static Player_Controller Instance;
+
+
     #region Enums (to assign words affectively to represent numbers
     private enum Directions {UP, DOWN, LEFT, RIGHT }
     #endregion
@@ -147,5 +153,22 @@ public class Player_Controller : MonoBehaviour
 
     #endregion
 
+    //adding code to make sure charcter loads between scenes
+    void start()
+    {
 
+        MyRigidbody2D = GetComponent<Rigidbody2D>();
+
+        if (Instance != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        //if not than whatever is attached to this script becomes instance
+        Instance = this;
+    
+        GameObject.DontDestroyOnLoad(this.gameObject);
+
+    }
 }
