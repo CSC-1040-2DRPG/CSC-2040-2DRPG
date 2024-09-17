@@ -154,7 +154,7 @@ public class Player_Controller : MonoBehaviour
     #endregion
 
     //adding code to make sure charcter loads between scenes
-    void start()
+    void Start()
     {
 
         MyRigidbody2D = GetComponent<Rigidbody2D>();
