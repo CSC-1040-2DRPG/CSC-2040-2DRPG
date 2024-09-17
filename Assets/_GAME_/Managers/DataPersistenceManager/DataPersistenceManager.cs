@@ -37,11 +37,7 @@ public class DataPesistenceManager : MonoBehaviour
         return new List<IDataPersistence>(FindObjectsOfType<MonoBehaviour>(true).OfType<IDataPersistence>());
     }
 
-    public void LoadGame(){
-        if(disableSaving){
-            return;
-        }
-        
+    public void LoadGame(){        
         //get data from file
         this.gameData = dataHandler.Load();
 
