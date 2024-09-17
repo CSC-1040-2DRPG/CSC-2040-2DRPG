@@ -2,10 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.IO;
 public class DataPesistenceManager : MonoBehaviour
 {
+    [Header("Debug")]
+    [SerializeField] private bool disableSaving;
+
+    [Header("File Storage Config")]
+    [SerializeField] private string fileName;
     private GameData gameData;
-    private List<IDataPersistence> dataPersistencesObjects;
+    private FileDataHandler dataHandler;
+    private List<IDataPersistence> dataPersistenceObjects;
     public static DataPesistenceManager instance {get; private set;}
 
     private void Awake() {
@@ -16,7 +23,8 @@ public class DataPesistenceManager : MonoBehaviour
     }
 
     private void Start(){
-        this.dataPersistencesObjects = findAllDataPersistencesObjects();
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+        this.dataPersistenceObjects = findAlldataPersistenceObjects();
         LoadGame();
     }
 
@@ -25,30 +33,43 @@ public class DataPesistenceManager : MonoBehaviour
     }
 
     //get all scripts that inherit IDataPersistence
-    private List<IDataPersistence> findAllDataPersistencesObjects(){
-        IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>(true).OfType<IDataPersistence>(); 
-
-        return new List<IDataPersistence>(dataPersistenceObjects);
+    private List<IDataPersistence> findAlldataPersistenceObjects(){
+        return new List<IDataPersistence>(FindObjectsOfType<MonoBehaviour>(true).OfType<IDataPersistence>());
     }
 
     public void LoadGame(){
-        // TODO - load data from file
+        if(disableSaving){
+            return;
+        }
+        
+        //get data from file
+        this.gameData = dataHandler.Load();
 
+        //start new game if no data
         if(this.gameData == null) {
             Debug.Log("No save found, starting new game.");
             NewGame();
         }
 
-        foreach (IDataPersistence dataObj in dataPersistencesObjects){
+        //send data to all scripts inheriting IDataPersistence
+        foreach (IDataPersistence dataObj in dataPersistenceObjects){
             dataObj.LoadData(gameData);
         }
     }
 
     public void SaveGame(){
-        //
+        if(disableSaving){
+            return;
+        }
 
-        //TODO - save data to file
+        //get data to be saved from all scripts inheriting IDataPersistence
+        foreach (IDataPersistence dataObj in dataPersistenceObjects) 
+        {
+            dataObj.SaveData(gameData);
+        }
 
+        //save data to file
+        dataHandler.Save(gameData);
     }
 
     public void OnApplicationQuit(){
