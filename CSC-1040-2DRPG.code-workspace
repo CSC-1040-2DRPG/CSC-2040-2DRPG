@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../AppData/LocalLow/DefaultCompany/CSC-1040-2DRPG"
+		}
+	],
+	"settings": {
+		"dotnet.defaultSolution": "CSC-1040-2DRPG.sln"
+	}
+}

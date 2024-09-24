@@ -7,6 +7,7 @@ public class DataPesistenceManager : MonoBehaviour
 {
     [Header("Debug")]
     [SerializeField] private bool disableSaving;
+    [SerializeField] private bool disableLoading;
 
     [Header("File Storage Config")]
     [SerializeField] private string fileName;
@@ -37,7 +38,8 @@ public class DataPesistenceManager : MonoBehaviour
         return new List<IDataPersistence>(FindObjectsOfType<MonoBehaviour>(true).OfType<IDataPersistence>());
     }
 
-    public void LoadGame(){        
+    public void LoadGame(){  
+        if(disableLoading) return;      
         //get data from file
         this.gameData = dataHandler.Load();
 
@@ -54,9 +56,7 @@ public class DataPesistenceManager : MonoBehaviour
     }
 
     public void SaveGame(){
-        if(disableSaving){
-            return;
-        }
+        if(disableSaving) return;
 
         //get data to be saved from all scripts inheriting IDataPersistence
         foreach (IDataPersistence dataObj in dataPersistenceObjects) 
