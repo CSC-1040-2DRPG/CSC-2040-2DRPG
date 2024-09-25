@@ -5,7 +5,6 @@ using UnityEngine;
 public class Chase : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject target;
     public float speed;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -19,11 +18,7 @@ public class Chase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, GameObject.FindWithTag("Player").transform.position, speed * Time.deltaTime);
         
     }
-
-
-
 }
