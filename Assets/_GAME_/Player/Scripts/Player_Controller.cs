@@ -27,13 +27,6 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
 
     [SerializeField] float sprintMultiplier = 2f;
 
-    [SerializeField] float Health = 100f;
-
-     [SerializeField] float Money = 0f;
-     
-
-
-
     #endregion
 
 

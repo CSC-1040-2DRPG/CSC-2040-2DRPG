@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "CSC-2040-2DRPG.sln"
+    "dotnet.defaultSolution": "CSC-1040-2DRPG.sln"
 }

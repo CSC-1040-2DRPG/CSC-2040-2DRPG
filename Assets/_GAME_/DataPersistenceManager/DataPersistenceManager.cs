@@ -61,9 +61,7 @@ public class DataPesistenceManager : MonoBehaviour
     }
 
     public void LoadGame(){  
-        if(disableLoading) {
-            NewGame();
-        };      
+        if(disableLoading) NewGame();     
         //get data from file
         this.gameData = dataHandler.Load();
 
