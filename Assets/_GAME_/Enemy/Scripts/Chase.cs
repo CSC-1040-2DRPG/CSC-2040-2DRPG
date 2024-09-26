@@ -10,8 +10,11 @@ public class Chase : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player"){
+            //when the square touches the player, this code runs
             speed += 0;
             print("You touched me!");
+
+            
         }
     }
 
