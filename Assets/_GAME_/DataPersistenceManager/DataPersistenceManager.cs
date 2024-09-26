@@ -13,7 +13,7 @@ public class DataPesistenceManager : MonoBehaviour
     [Header("File Storage Config")]
     [SerializeField] private string fileName;
     private GameData gameData;
-    private FileDataHandler dataHandler;
+    public FileDataHandler dataHandler;
     private List<IDataPersistence> dataPersistenceObjects;
     public static DataPesistenceManager instance {get; private set;}
 
@@ -26,7 +26,7 @@ public class DataPesistenceManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(this.gameObject);
 
-        //this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
     }
 
     // private void OnEnable() 
@@ -63,7 +63,6 @@ public class DataPesistenceManager : MonoBehaviour
     public void LoadGame(){  
         if(disableLoading) {
             NewGame();
-            return;
         };      
         //get data from file
         this.gameData = dataHandler.Load();

@@ -7,7 +7,7 @@ using UnityEngine;
 
 //Use #region (press tab) to act as dividers to keep your code neat
 
-public class Player_Controller : MonoBehaviour
+public class Player_Controller : MonoBehaviour, IDataPersistence
 {
     private Rigidbody2D MyRigidbody2D;
 
@@ -18,7 +18,7 @@ public class Player_Controller : MonoBehaviour
 
     #region EditorData
     [Header("Movement Attributes")]      
-    [SerializeField] float _moveSpeed = 5f;  //High because multiplying by time.DeltaTime to accomodate for multiplayer diff fps
+    [SerializeField] float _moveSpeed;
 
     [Header("Dependencies")]
     [SerializeField] Rigidbody2D _rb;
@@ -146,6 +146,14 @@ public class Player_Controller : MonoBehaviour
         {
             _animator.CrossFade(_animMoveDown, 0);
         }
+    }
+
+    public void LoadData(GameData data){
+            _moveSpeed = data.playerSpeed;
+    }
+
+    public void SaveData(GameData data){
+        data.playerSpeed = _moveSpeed;
     }
 
     #endregion
