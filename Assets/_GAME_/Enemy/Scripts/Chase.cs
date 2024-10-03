@@ -13,7 +13,7 @@ public class Chase : MonoBehaviour
     void Start()
     {
         // Get the Player_health component from the player GameObject
-        p1Health = player.GetComponent<Player_health>();
+        p1Health = player.GetComponentInChildren<Player_health>();
     }
 
     // Detect collision with player
