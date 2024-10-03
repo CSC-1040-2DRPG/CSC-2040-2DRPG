@@ -4,25 +4,37 @@ using UnityEngine;
 
 public class Chase : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject player;
+    private Player_health p1Health;  // Reference to the Player_health component
+    public int damage = 10;
     public float speed;
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        // Get the Player_health component from the player GameObject
+        p1Health = player.GetComponent<Player_health>();
+    }
 
-
-     void OnCollisionEnter2D(Collision2D collision) 
-    { 
-        if (collision.gameObject.CompareTag("Player")) 
-        { 
-            speed += 0;
+    // Detect collision with player
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
             print("You have touched me!");
-        } 
+
+            // Get the current health, subtract damage, and update health
+            int currentHealth = (int)p1Health.healthSlider.value;
+            int newHealth = currentHealth - damage;
+
+            // Update player's health
+            p1Health.SetHealth(newHealth);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, GameObject.FindWithTag("Player").transform.position, speed * Time.deltaTime);
-        
-    }
-
+        // Chase the player
+    transform.position = Vector2.MoveTowards(transform.position, GameObject.FindWithTag("Player").transform.position, speed * Time.deltaTime);    }
 }
