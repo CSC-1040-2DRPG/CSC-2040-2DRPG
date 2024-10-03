@@ -7,15 +7,15 @@ public class Chase : MonoBehaviour
     // Start is called before the first frame update
     public float speed;
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "Player"){
-            //when the square touches the player, this code runs
-            speed += 0;
-            print("You touched me!");
 
-            
-        }
+
+     void OnCollisionEnter2D(Collision2D collision) 
+    { 
+        if (collision.gameObject.CompareTag("Player")) 
+        { 
+            speed += 0;
+            print("You have touched me!");
+        } 
     }
 
     // Update is called once per frame
@@ -24,4 +24,5 @@ public class Chase : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, GameObject.FindWithTag("Player").transform.position, speed * Time.deltaTime);
         
     }
+
 }
