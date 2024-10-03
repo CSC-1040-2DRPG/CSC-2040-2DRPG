@@ -5,27 +5,26 @@ using UnityEngine.UI;
 
 public class Player_health : MonoBehaviour
 {
-
     public Slider healthSlider;
     public float maxhealth = 100f;
-    public float health; 
+    public float health;
 
-
-    void Start ()
+    void Start()
     {
-        health = maxhealth; 
+        health = maxhealth;
     }
 
-    void update  ()
+    void Update()
     {
-        if(healthSlider.value != health)
+        if (healthSlider.value != health)
         {
             healthSlider.value = health;
         }
     }
 
-
-   
-    
-
+    public void SetHealth(float newHealth)
+    {
+        health = newHealth;
+    }
 }
+
