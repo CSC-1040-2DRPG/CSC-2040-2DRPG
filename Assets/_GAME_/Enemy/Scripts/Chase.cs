@@ -13,7 +13,7 @@ public class Chase : MonoBehaviour
     void Start()
     {
         // Get the Player_health component from the player GameObject
-        p1Health = player.GetComponent<Player_health>();
+        p1Health = player.GetComponentInChildren<Player_health>();
     }
 
     // Detect collision with player
@@ -24,11 +24,10 @@ public class Chase : MonoBehaviour
             print("You have touched me!");
 
             // Get the current health, subtract damage, and update health
-            int currentHealth = (int)p1Health.healthSlider.value;
-            int newHealth = currentHealth - damage;
+            float newHealth = p1Health.health - damage;
 
-            // Update player's health
-            p1Health.SetHealth(newHealth);
+            // Ensure the health doesn't drop below zero
+            p1Health.health = Mathf.Max(newHealth, 0);
         }
     }
 
@@ -36,5 +35,5 @@ public class Chase : MonoBehaviour
     void Update()
     {
         // Chase the player
-    transform.position = Vector2.MoveTowards(transform.position, GameObject.FindWithTag("Player").transform.position, speed * Time.deltaTime);    }
+        transform.position = Vector2.MoveTowards(transform.position, GameObject.FindWithTag("Player").transform.position, speed * Time.deltaTime);    }
 }
