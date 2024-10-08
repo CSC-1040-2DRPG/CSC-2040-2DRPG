@@ -6,14 +6,19 @@ using UnityEngine;
 
 public class Chest : MonoBehaviour, IDataPersistence
 {
-    [SerializeField] public BoxCollider2D boxCollider;
     [SerializeField] public Item item;
-    [SerializeField] private String chestID;
     [SerializeField] private Sprite openSprite;
-    public bool opened = false;
+    [SerializeField] private String chestID;
+
+    [ContextMenu("Generate guid for id")]
+    private void GenerateGuid() 
+    {
+        chestID = Guid.NewGuid().ToString();
+    }
+    
+    private bool opened = false;
     private bool playerInRange = false;
     // Start is called before the first frame update
-    
     
     private void OnTriggerEnter2D(Collider2D collision) {
         playerInRange = true;

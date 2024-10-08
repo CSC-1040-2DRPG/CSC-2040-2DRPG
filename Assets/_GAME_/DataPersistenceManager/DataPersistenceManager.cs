@@ -29,39 +29,43 @@ public class DataPesistenceManager : MonoBehaviour
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
     }
 
-    // private void OnEnable() 
-    // {
-    //     SceneManager.sceneLoaded += OnSceneLoaded;
-    // }
+    private void OnEnable() 
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
-    // private void OnDisable() 
-    // {
-    //     SceneManager.sceneLoaded -= OnSceneLoaded;
-    // }
+    private void OnDisable() 
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
-    // public void OnSceneLoaded(Scene scene, LoadSceneMode mode) 
-    // {
-    //     this.dataPersistenceObjects = FindAllDataPersistenceObjects();
-    //     LoadGame();
-    // }
-
-    private void Start(){
-        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
         LoadGame();
     }
 
+    // private void Start(){
+    //     this.dataPersistenceObjects = FindAllDataPersistenceObjects();
+    //     LoadGame();
+    // }
+
     //get all scripts that inherit IDataPersistence
     private List<IDataPersistence> FindAllDataPersistenceObjects(){
-        return new List<IDataPersistence>(FindObjectsOfType<MonoBehaviour>(true).OfType<IDataPersistence>());
+        Debug.Log("Data Persistant objects aquired");
+        IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>(true).OfType<IDataPersistence>();
+
+        return new List<IDataPersistence>(dataPersistenceObjects);
     }
 
     public void NewGame(){
         this.gameData = new GameData();
     }
 
-    public void LoadGame(){  
-        if(disableLoading) NewGame();     
+    public void LoadGame(){    
+        if(disableLoading) {
+            return;
+        }   
+
         //get data from file
         this.gameData = dataHandler.Load();
 
@@ -81,9 +85,20 @@ public class DataPesistenceManager : MonoBehaviour
     public void SaveGame(){
         if(disableSaving) return;
 
+        if (this.gameData == null) 
+        {
+            Debug.LogWarning("No data was found. A New Game needs to be started before data can be saved.");
+            return;
+        }
+
         //get data to be saved from all scripts inheriting IDataPersistence
         foreach (IDataPersistence dataObj in dataPersistenceObjects) 
         {
+            if(dataObj == null) {
+                Debug.LogWarning(dataObj + " is null! make sure it doesn't get removed before saving");
+                break;
+            }
+            Debug.Log(dataObj + " data saved");
             dataObj.SaveData(gameData);
         }
 
@@ -94,6 +109,8 @@ public class DataPesistenceManager : MonoBehaviour
     }
 
     public void OnApplicationQuit(){
+        Debug.Log("Application Quit 1");
         SaveGame();
+        Debug.Log("Application Quit 2");
     }
 }
