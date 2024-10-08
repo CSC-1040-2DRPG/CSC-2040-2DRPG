@@ -40,7 +40,6 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
     private readonly int _animMoveDown = Animator.StringToHash("Anim_Player_Move_Down");
     private bool _isSprinting;
     private float finalMoveSpeed;
-     
 
     #endregion
 
@@ -147,7 +146,7 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
     }
 
     public void LoadData(GameData data){
-            _moveSpeed = data.playerSpeed;
+        _moveSpeed = data.playerSpeed;
     }
 
     public void SaveData(GameData data){

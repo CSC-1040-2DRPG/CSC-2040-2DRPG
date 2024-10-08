@@ -4,9 +4,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerData : MonoBehaviour, IDataPersistence
+public class playerPositionHandler : MonoBehaviour, IDataPersistence
 {
-    public static PlayerData instance {get; private set;}
+    public Vector3 lastKnownPosition;
+    public static playerPositionHandler instance {get; private set;}
     //make sure there's only one player
     private void Awake() {
         if(instance != null){
@@ -16,6 +17,12 @@ public class PlayerData : MonoBehaviour, IDataPersistence
         }
         instance = this;
         DontDestroyOnLoad(this.gameObject);
+    }
+    
+    private void Update(){
+        if (transform == null | transform.position.x +transform.position.y != 0) return;
+        lastKnownPosition.x = transform.position.x;
+        lastKnownPosition.y = transform.position.y;
     }
 
     private void Start(){
@@ -34,11 +41,8 @@ public class PlayerData : MonoBehaviour, IDataPersistence
     }
 
     public void SaveData(GameData data){
-        if(data == null){
-            Debug.LogError("SaveData not working, GameData is Null");
-            return;
-        }
-        data.playerSceneName = SceneManager.GetActiveScene().name;
-        data.playerPosition = this.transform.position; //store current position in data
+        Debug.Log("position save");
+        data.playerSceneName = SceneManager.GetActiveScene().name; //store player scene
+        data.playerPosition = lastKnownPosition; //store player position
     }
 }
