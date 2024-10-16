@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [SelectionBase] //Selects game objects that has this script on it when clicking any of the subobjects in the scene
@@ -69,19 +70,27 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
         _moveDir.y = Input.GetAxisRaw("Vertical");
         _isSprinting = Input.GetKey(KeyCode.LeftShift);
 
+        Inventory inventory = playerDataHandler.instance.inventory;
 
+        if (Input.GetMouseButtonDown(0)) UseItem(inventory.activeItem1);
+        if (Input.GetMouseButtonDown(1)) UseItem(inventory.activeItem2);
+        
         //print(_moveDir);   --> for testing purposes to make sure game is intaking the Inputs correctly
     }
 
     #endregion
 
     #region Movement Logic
-        private void MovementUpdate()
+    private void MovementUpdate()
     {
         //.normalized normalizes for diagnoals so its smooth and even
         //Time.fixedDeltaTime insures player speed is consistant regardless of FPS
         //multiplying by 50 speeds up the movement so it is equal to what it would be without Time.fixedDeltaTime
         _rb.velocity = _moveDir.normalized * finalMoveSpeed * (Time.fixedDeltaTime * 50); 
+    }
+
+    private void UseItem(ItemStack item){
+        if(item != null) item.useItem();
     }
     #endregion
 

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Chest : MonoBehaviour, IDataPersistence
 {
-    [SerializeField] public Item item;
+    [SerializeField] public ItemStack itemName;
     [SerializeField] private Sprite openSprite;
     [SerializeField] private String chestID;
 
@@ -18,14 +18,17 @@ public class Chest : MonoBehaviour, IDataPersistence
     
     private bool opened = false;
     private bool playerInRange = false;
+    private playerDataHandler player;
     // Start is called before the first frame update
     
     private void OnTriggerEnter2D(Collider2D collision) {
         playerInRange = true;
+        player = collision.GetComponent<playerDataHandler>();
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
         playerInRange = false;
+        player = null;
     }
 
     public void Update(){
@@ -38,6 +41,8 @@ public class Chest : MonoBehaviour, IDataPersistence
         if(opened) return;
         opened = true;
         gameObject.GetComponent<SpriteRenderer>().sprite = openSprite;
+
+        player.inventory.AddItem(new ItemStack(ItemStack.ItemType.Sword));
     }
 
     public void LoadData(GameData data) 

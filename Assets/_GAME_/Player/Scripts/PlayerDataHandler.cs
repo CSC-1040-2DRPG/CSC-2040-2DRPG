@@ -4,11 +4,11 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class playerPositionHandler : MonoBehaviour, IDataPersistence
+public class playerDataHandler : MonoBehaviour, IDataPersistence
 {
     public Vector3 lastKnownPosition;
-    public static playerPositionHandler instance {get; private set;}
-    //make sure there's only one player
+    public static playerDataHandler instance {get; private set;}
+    public Inventory inventory;
     private void Awake() {
         if(instance != null){
             Debug.Log("Found more than one Player in the scene. Destroying the newest one.");
@@ -17,6 +17,8 @@ public class playerPositionHandler : MonoBehaviour, IDataPersistence
         }
         instance = this;
         DontDestroyOnLoad(this.gameObject);
+
+        inventory = new Inventory();
     }
     
     private void Update(){
@@ -37,12 +39,13 @@ public class playerPositionHandler : MonoBehaviour, IDataPersistence
 
     //saving and loading of player data
     public void LoadData(GameData data){
-        //will load players inventory later
+        inventory = data.playerInventory;
     }
 
     public void SaveData(GameData data){
-        Debug.Log("position save");
         data.playerSceneName = SceneManager.GetActiveScene().name; //store player scene
         data.playerPosition = lastKnownPosition; //store player position
+
+        data.playerInventory = inventory;
     }
 }

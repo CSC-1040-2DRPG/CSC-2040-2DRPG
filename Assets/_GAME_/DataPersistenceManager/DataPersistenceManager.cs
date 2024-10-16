@@ -63,6 +63,7 @@ public class DataPesistenceManager : MonoBehaviour
 
     public void LoadGame(){    
         if(disableLoading) {
+            NewGame();
             return;
         }   
 
