@@ -14,21 +14,17 @@ public class Player_health : MonoBehaviour
         health = maxhealth;
     }
 
-    
-
-    public void SetHealth(float newHealth)
+    void Update()
     {
-        health = newHealth;
-        print("Updating!");
-    }
-void Update()
-    {
-        //health = health -0.001f;
         if (healthSlider.value != health)
         {
             healthSlider.value = health;
         }
     }
 
+    public void SetHealth(float newHealth)
+    {
+        health = newHealth;
+    }
 }
 
