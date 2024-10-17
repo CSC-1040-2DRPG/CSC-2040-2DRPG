@@ -6,7 +6,7 @@ public class Chase : MonoBehaviour
 {
     public GameObject player;
     private Player_health p1Health;  // Reference to the Player_health component
-    public int damage = 10;
+    public float damage = 10;
     public float speed;
 
     // Start is called before the first frame update
@@ -23,11 +23,31 @@ public class Chase : MonoBehaviour
         {
             print("You have touched me!");
 
+            print("Player healthSlider: " + p1Health.healthSlider.value);
+            print("Player health: " + p1Health.health);
+
+            
+
+
+           
+
+
             // Get the current health, subtract damage, and update health
             float newHealth = p1Health.health - damage;
 
+             print("Player newhealth: " + newHealth);
+
+             p1Health.SetHealth(newHealth);
+
+
+
+
+           // p1Health.health == newHealth;
+
+           // SetHealth(newHealth);
+
             // Ensure the health doesn't drop below zero
-            p1Health.health = Mathf.Max(newHealth, 0);
+            //p1Health.health = Mathf.Max(newHealth, 0);
         }
     }
 
@@ -35,5 +55,9 @@ public class Chase : MonoBehaviour
     void Update()
     {
         // Chase the player
+
+        if (p1Health.health == 100){
         transform.position = Vector2.MoveTowards(transform.position, GameObject.FindWithTag("Player").transform.position, speed * Time.deltaTime);    }
+        }
+
 }
