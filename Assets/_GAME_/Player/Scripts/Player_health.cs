@@ -6,25 +6,20 @@ using UnityEngine.UI;
 public class Player_health : MonoBehaviour
 {
     public Slider healthSlider;
-    public float maxhealth = 100f;
+    public float maxHealth = 100f;
     public float health;
 
     void Start()
     {
-        health = maxhealth;
+        health = maxHealth;
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = health;
     }
 
-    void Update()
+    public void TakeDamage(float damage)
     {
-        if (healthSlider.value != health)
-        {
-            healthSlider.value = health;
-        }
-    }
-
-    public void SetHealth(float newHealth)
-    {
-        health = newHealth;
+        health = Mathf.Max(health - damage, 0);
+        healthSlider.value = health;
     }
 }
 
