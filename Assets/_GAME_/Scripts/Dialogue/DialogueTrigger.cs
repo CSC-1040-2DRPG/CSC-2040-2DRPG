@@ -22,6 +22,10 @@ public class DialogueTrigger : MonoBehaviour
         if (playerinRange)
         {
             visualCue.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Debug.Log(inkJSON.text);
+            }
         }
         else
         {
