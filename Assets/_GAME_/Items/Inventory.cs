@@ -15,9 +15,10 @@ public class Inventory
         itemList = new List<ItemStack>();
     }
 
-    public void AddItem(ItemStack item){
+    public bool AddItem(ItemStack item){
         itemList.Add(item);
         Debug.Log(itemList.Count);
         activeItem1 = item;
+        return true;
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class Chest : MonoBehaviour, IDataPersistence
@@ -39,10 +40,13 @@ public class Chest : MonoBehaviour, IDataPersistence
 
     public void Open(){
         if(opened) return;
+
+        bool added = player.inventory.AddItem(new ItemStack(ItemStack.ItemType.Sword));
+        
+        if(!added) return;
+
         opened = true;
         gameObject.GetComponent<SpriteRenderer>().sprite = openSprite;
-
-        player.inventory.AddItem(new ItemStack(ItemStack.ItemType.Sword));
     }
 
     public void LoadData(GameData data) 
