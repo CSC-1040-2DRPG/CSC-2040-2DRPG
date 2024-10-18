@@ -5,20 +5,14 @@ using UnityEngine;
 public class Chase : MonoBehaviour
 {
     public GameObject player;
-    private Player_health p1Health;  // Reference to the Player_health component
+   
     public int damage = 10;
     public float speed;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Get the Player_health component from the player GameObject
-        if (player != null)
-        {
-            p1Health = player.GetComponentInChildren<Player_health>();
-        }
-
-
+        
     }
 
     // Detect collision with player
@@ -26,20 +20,12 @@ public class Chase : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            print("You have touched me!");
 
-            // Get the current health, subtract damage, and update health
-            //float newHealth = p1Health.health - damage;
-
-            // Ensure the health doesn't drop below zero
-           // p1Health.health = Mathf.Max(newHealth, 0);
-
-            if (p1Health != null)
-            {
-                p1Health.TakeDamage(damage);
-               
-            }
-
+            GameObject player = collision.gameObject;
+            
+            // call to TakeDamage function -> inside Player_health script 
+            player.GetComponentInChildren<Player_health>().TakeDamage(damage);
+            
         }
     }
 
@@ -47,10 +33,6 @@ public class Chase : MonoBehaviour
     void Update()
     {
         // Chase the player
-       // if (player != null)
-       // {
-
             transform.position = Vector2.MoveTowards(transform.position, GameObject.FindWithTag("Player").transform.position, speed * Time.deltaTime);
-       // }
     }
 }
