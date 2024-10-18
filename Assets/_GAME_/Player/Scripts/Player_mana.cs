@@ -20,11 +20,27 @@ public class Player_mana : MonoBehaviour
         manaSlider.value = mana;
     }
 
-    public void UseManaDamage(float ManaCost)
+    public void UseMana(float ManaCost)
     {
         mana = Mathf.Max(mana - ManaCost, 0);
         manaSlider.value = mana;
     }
 
-    
+    public void RecoverMana(float Recover)
+    {
+        mana = mana + Recover;
+    }
+
+    public void Update()
+    {
+
+        
+        if (manaSlider.value != mana)
+       {
+            manaSlider.value = mana;
+           
+        }
+    }
+
+
 }

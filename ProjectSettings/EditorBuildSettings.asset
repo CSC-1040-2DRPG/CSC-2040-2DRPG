@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_GAME_/Scenes/player_house.unity
     guid: 772d0ebe91881184abb04211bbfa93ed
+  - enabled: 1
+    path: Assets/_GAME_/Scenes/lab.unity
+    guid: 38b0973ac6e1c1247b10994ecc2685d4
   m_configObjects: {}

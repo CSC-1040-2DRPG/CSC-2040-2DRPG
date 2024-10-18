@@ -22,14 +22,28 @@ public class Player_health : MonoBehaviour
         health = Mathf.Max(health - damage, 0);
        
         healthSlider.value = health;
-        Debug.Log("Health Updated: " + health);
-        Debug.Log("Health Slider Updated: " + healthSlider.value);
+       // Debug.Log("Health Updated: " + health);
+      //  Debug.Log("Health Slider Updated: " + healthSlider.value);
 
+    }
+
+
+    public void HealHealth (float heal)
+    {
+        health = Mathf.Max(health + heal,0);
+    }
+
+    public void CheckDeath() 
+    { 
+        if(health == 0)
+        {
+           print("player died");
+        }
     }
 
     public void Update()
     {
-       
+       CheckDeath();
         
         if (healthSlider.value != health)
         {

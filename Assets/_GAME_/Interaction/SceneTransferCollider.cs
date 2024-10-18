@@ -5,7 +5,7 @@ using System.Linq;
 using System.IO;
 using UnityEngine.SceneManagement;
 
-public class Player_house_script : MonoBehaviour
+public class SceneTransfer : MonoBehaviour
 {
     [SerializeField] public String sceneName;
 
