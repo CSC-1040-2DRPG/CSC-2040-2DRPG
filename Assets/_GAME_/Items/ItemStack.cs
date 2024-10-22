@@ -30,5 +30,8 @@ public class ItemStack
 
     public void useItem(){
         Debug.Log(itemType + " used!");
+        if(itemType == ItemType.Sword && stackAmount > 0){
+            //call sword use method here
+        }
     }
 }
