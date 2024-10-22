@@ -152,11 +152,18 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
         {
             _animator.CrossFade(_animMoveDown, 0);
         }
+
+       
+
+
     }
+
+ 
 
     public void LoadData(GameData data){
         _moveSpeed = data.playerSpeed;
     }
+
 
     public void SaveData(GameData data){
         data.playerSpeed = _moveSpeed;
