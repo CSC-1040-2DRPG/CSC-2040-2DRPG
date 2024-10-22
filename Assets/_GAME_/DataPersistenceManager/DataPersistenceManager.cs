@@ -12,7 +12,7 @@ public class DataPesistenceManager : MonoBehaviour
 
     [Header("File Storage Config")]
     [SerializeField] private string fileName;
-    private GameData gameData;
+    public GameData gameData;
     public FileDataHandler dataHandler;
     private List<IDataPersistence> dataPersistenceObjects;
     public static DataPesistenceManager instance {get; private set;}
