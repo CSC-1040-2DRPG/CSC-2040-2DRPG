@@ -12,6 +12,7 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
 {
     private Rigidbody2D MyRigidbody2D;
 
+    
 
     #region Enums (to assign words affectively to represent numbers
     private enum Directions {UP, DOWN, LEFT, RIGHT }
@@ -30,7 +31,6 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
 
     #endregion
 
-
     #region Internal Data
     private Vector2 _moveDir = Vector2.zero;
     private Directions _facingDirection = Directions.RIGHT;
@@ -42,15 +42,24 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
     private bool _isSprinting;
     private float finalMoveSpeed;
 
+  
+
+   
     #endregion
 
     #region Tick
+
+    
     private void Update()
     {
         GatherInput();
         CalculateFacingDirection();
         UpdateAnimation();
+
+     
     }
+
+   
 
     private void FixedUpdate() //For Physics System
     {
@@ -170,4 +179,7 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
     }
 
     #endregion
+
+
+
 }
