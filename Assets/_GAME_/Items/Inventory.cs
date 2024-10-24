@@ -16,8 +16,18 @@ public class Inventory
     }
 
     public void AddItem(ItemStack item){
-        itemList.Add(item);
-        Debug.Log(itemList.Count);
-        activeItem1 = item;
+        bool alreadyHas = false;
+        foreach(ItemStack i in itemList){
+            if (i.itemType == item.itemType) {
+                i.stackAmount += item.stackAmount;
+                alreadyHas = true;
+                Debug.Log("got " + item.stackAmount + " " + item.itemType + "(s), " + i.stackAmount + " in total");
+            }
+        }
+        if(!alreadyHas) {
+            itemList.Add(item);
+            activeItem1 = item;
+            Debug.Log("got " + item.stackAmount + " " + item.itemType + "(s)");
+        }
     }
 }
