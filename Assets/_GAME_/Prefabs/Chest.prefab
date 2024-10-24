@@ -189,6 +189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc2304bbb7eee9547b4608fd67e9b35d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
+  itemName:
+    itemType: 0
+    stackAmount: 1
   openSprite: {fileID: 657668279, guid: 9ebce57d31185ce46b847b71c9889a58, type: 3}
   chestID: 
