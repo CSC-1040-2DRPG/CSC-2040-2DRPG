@@ -33,11 +33,6 @@ public class Chase : MonoBehaviour
     void Update()
     {
         // Chase the player
-        if(playerDataHandler.instance.GetComponentInChildren<Player_health>().health > 0){
-
-             transform.position = Vector2.MoveTowards(transform.position, GameObject.FindWithTag("Player").transform.position, speed * Time.deltaTime);
-
-        }
-
+            transform.position = Vector2.MoveTowards(transform.position, GameObject.FindWithTag("Player").transform.position, speed * Time.deltaTime);
     }
 }

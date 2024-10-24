@@ -29,21 +29,9 @@ public class ItemStack
     }
 
     public void useItem(){
-        if(stackAmount < 1) return;
-        switch(itemType){
-            case ItemType.Sword:
-                break;
-            case ItemType.HealthPotion:
-                if(playerDataHandler.instance.GetComponentInChildren<Player_health>().health >= playerDataHandler.instance.GetComponentInChildren<Player_health>().maxHealth) break;
-                playerDataHandler.instance.GetComponentInChildren<Player_health>().HealHealth(10);
-                stackAmount--;
-                break;
-            case ItemType.ManaPotion:
-                if(playerDataHandler.instance.GetComponentInChildren<Player_mana>().mana >= playerDataHandler.instance.GetComponentInChildren<Player_mana>().maxMana) break;
-                playerDataHandler.instance.GetComponentInChildren<Player_mana>().RecoverMana(10);
-                stackAmount--;
-                break;
+        Debug.Log(itemType + " used!");
+        if(itemType == ItemType.Sword && stackAmount > 0){
+            //call sword use method here
         }
-        Debug.Log(itemType + " used! " + stackAmount + " remaining.");
     }
 }

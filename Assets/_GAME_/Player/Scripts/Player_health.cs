@@ -17,10 +17,6 @@ public class Player_health : MonoBehaviour
 
     }
 
-
-
-
-
     public void TakeDamage(float damage)
     {
         health = Mathf.Max(health - damage, 0);
@@ -28,6 +24,7 @@ public class Player_health : MonoBehaviour
         healthSlider.value = health;
        // Debug.Log("Health Updated: " + health);
       //  Debug.Log("Health Slider Updated: " + healthSlider.value);
+
     }
 
 
