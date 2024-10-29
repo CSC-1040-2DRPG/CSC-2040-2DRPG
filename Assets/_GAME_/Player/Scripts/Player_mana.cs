@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player_mana : MonoBehaviour
+public class Player_mana : MonoBehaviour, IDataPersistence
 {
-    
-    
- 
 
     public Slider manaSlider;
     public float maxMana = 100f;
@@ -42,5 +39,12 @@ public class Player_mana : MonoBehaviour
         }
     }
 
+    public void LoadData(GameData data){
+        mana = data.playerMana;
+    }
+
+    public void SaveData(GameData data){
+        data.playerMana = mana;
+    }
 
 }
