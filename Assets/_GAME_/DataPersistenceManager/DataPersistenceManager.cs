@@ -44,12 +44,6 @@ public class DataPesistenceManager : MonoBehaviour
         LoadGame();
     }
 
-    // private void Start(){
-    //     this.dataPersistenceObjects = FindAllDataPersistenceObjects();
-    //     LoadGame();
-    // }
-
-    //get all scripts that inherit IDataPersistence
     private List<IDataPersistence> FindAllDataPersistenceObjects(){
         Debug.Log("Data Persistant objects aquired");
         IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>(true).OfType<IDataPersistence>();
@@ -110,8 +104,7 @@ public class DataPesistenceManager : MonoBehaviour
     }
 
     public void OnApplicationQuit(){
-        Debug.Log("Application Quit 1");
         SaveGame();
-        Debug.Log("Application Quit 2");
+        Debug.Log("Application Quit!");
     }
 }

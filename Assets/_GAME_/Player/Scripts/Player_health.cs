@@ -52,5 +52,12 @@ public class Player_health : MonoBehaviour
         }
     }
 
+    public void LoadData(GameData data){
+        health = data.playerHealth;
+    }
+
+    public void SaveData(GameData data){
+        data.playerHealth = health;
+    }
 }
 

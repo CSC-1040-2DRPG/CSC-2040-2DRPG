@@ -13,6 +13,8 @@ public class Inventory
 
     public Inventory(){
         itemList = new List<ItemStack>();
+        activeItem1 = null;
+        activeItem2 = null;
     }
 
     public void AddItem(ItemStack item){

@@ -31,10 +31,9 @@ public class playerDataHandler : MonoBehaviour, IDataPersistence
     }
 
     public void OnApplicationQuit(){
-        GameData data = DataPesistenceManager.instance.gameData;
-
-        data.playerSceneName = SceneManager.GetActiveScene().name; //store player scene
-        data.playerPosition = transform.position; //store player position
+        DataPesistenceManager.instance.gameData.playerSceneName = SceneManager.GetActiveScene().name; //store player scene
+        DataPesistenceManager.instance.gameData.playerPosition = transform.position; //store player position
+        DataPesistenceManager.instance.SaveGame();
     }
 
     //saving and loading of player data

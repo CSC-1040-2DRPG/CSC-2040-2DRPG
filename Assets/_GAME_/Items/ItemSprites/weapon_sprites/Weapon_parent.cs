@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Weapon_parent : MonoBehaviour
@@ -52,9 +53,10 @@ public class Weapon_parent : MonoBehaviour
         else
         {
             //trigger animation 
-            animator.SetTrigger("WeaponAttack");
+            animator.CrossFade(Animator.StringToHash("WeaponAttack"), 0);
+            Debug.Log("WeaponAttack animation called!");
             attackBlocked = true;
-            StartCoroutine(DelayAttack() );
+            StartCoroutine(DelayAttack());
         }
 
     }
