@@ -8,13 +8,13 @@ public class Player_health : MonoBehaviour
     public Slider healthSlider;
     public float maxHealth = 100f;
     public float health;
-    
-
+    private Animator animator;
+    public bool isDead = false;
     void Start(){
         health = maxHealth;
         healthSlider.maxValue = maxHealth;
         healthSlider.value = health;
-
+      ;
     }
 
     public void TakeDamage(float damage)
@@ -35,10 +35,7 @@ public class Player_health : MonoBehaviour
 
     public void CheckDeath() 
     { 
-        if(health == 0)
-        {
-           print("player died");
-        }
+      
     }
 
     public void Update()
@@ -49,6 +46,8 @@ public class Player_health : MonoBehaviour
         {
             healthSlider.value = health;
             //Debug.Log("Health Slider Updated: " + healthSlider.value);
+
+   
         }
     }
 

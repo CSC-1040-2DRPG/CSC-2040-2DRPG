@@ -42,6 +42,9 @@ public class Weapon_parent : MonoBehaviour
 
     }
 
+    public Transform circleOrigin;
+    public float radius;
+
 
     public void Attack()
     {
@@ -66,6 +69,21 @@ public class Weapon_parent : MonoBehaviour
         //wait for delay before allowing player to attack again
         yield return new WaitForSeconds(delay);
         attackBlocked = false;
+    }
+
+    private void OnDrawGizmoSelected()
+    {
+        Gizmos.color = Color.blue;
+        Vector3 position = circleOrigin == null ? Vector3.zero : circleOrigin.position;
+        Gizmos.DrawWireSphere(position, radius);
+    }
+
+    public void DetactColliders()
+    {
+        foreach(Collider2D collider in Physics2D.OverlapCircleAll(circleOrigin.position,radius))
+        {
+            Debug.Log(collider.name);
+        }
     }
 
 }

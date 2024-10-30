@@ -12,7 +12,7 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
 {
     private Rigidbody2D MyRigidbody2D;
 
-    
+  
 
     #region Enums (to assign words affectively to represent numbers
     private enum Directions {UP, DOWN, LEFT, RIGHT }
@@ -56,7 +56,22 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
         CalculateFacingDirection();
         UpdateAnimation();
 
-     
+        // play death animation when health = 0
+        if
+           (playerDataHandler.instance.GetComponentInChildren<Player_health>().health == 0f && playerDataHandler.instance.GetComponentInChildren<Player_health>().isDead == false)
+        {
+            playerDataHandler.instance.GetComponentInChildren<Player_health>().isDead = true;
+
+            _animator.CrossFade(Animator.StringToHash("player_death"), 0);
+            Debug.Log("player died");
+
+            //disable player controller after death 
+            GetComponent<Player_Controller>().enabled = false;
+           
+           
+
+
+        }
     }
 
    
@@ -164,6 +179,7 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
 
        
 
+        
 
     }
 
@@ -180,6 +196,7 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
 
     #endregion
 
-
+        
+   
 
 }
