@@ -42,14 +42,23 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
     private bool _isSprinting;
     private float finalMoveSpeed;
 
-  
 
-   
+    public Transform lastBonfire;
+
+    public void SetLastBonfire(Transform bonfire)
+    {
+        lastBonfire = bonfire;
+
+        Debug.Log("Updated last bonfire to: " + bonfire.position);
+    }
+
     #endregion
 
     #region Tick
 
-    
+
+
+
     private void Update()
     {
         GatherInput();
@@ -58,19 +67,19 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
 
         // play death animation when health = 0
         if
-           (playerDataHandler.instance.GetComponentInChildren<Player_health>().health == 0f && playerDataHandler.instance.GetComponentInChildren<Player_health>().isDead == false)
+           ( playerDataHandler.instance.GetComponentInChildren<Player_health>().isDead == true && playerDataHandler.instance.GetComponentInChildren<Player_health>().health == 0f )
         {
-            playerDataHandler.instance.GetComponentInChildren<Player_health>().isDead = true;
-
+    
             _animator.CrossFade(Animator.StringToHash("player_death"), 0);
-            Debug.Log("player died");
 
+           
+            Debug.Log("player died");
+           
             //disable player controller after death 
             GetComponent<Player_Controller>().enabled = false;
-           
-           
 
 
+           
         }
     }
 

@@ -7,6 +7,7 @@ TagManager:
   - Manager
   - Enemy
   - Item
+  - checkpoint
   layers:
   - Default
   - TransparentFX
@@ -64,4 +65,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 3249784101
+    locked: 0
+  - name: Checkpoint
+    uniqueID: 736223349
     locked: 0

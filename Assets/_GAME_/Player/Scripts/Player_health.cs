@@ -9,12 +9,14 @@ public class Player_health : MonoBehaviour
     public float maxHealth = 100f;
     public float health;
     private Animator animator;
-    public bool isDead = false;
+    public bool isDead;
+
+
     void Start(){
         health = maxHealth;
         healthSlider.maxValue = maxHealth;
         healthSlider.value = health;
-      ;
+        isDead = false;
     }
 
     public void TakeDamage(float damage)
@@ -22,9 +24,12 @@ public class Player_health : MonoBehaviour
         health = Mathf.Max(health - damage, 0);
        
         healthSlider.value = health;
-       // Debug.Log("Health Updated: " + health);
-      //  Debug.Log("Health Slider Updated: " + healthSlider.value);
 
+      
+        // Debug.Log("Health Updated: " + health);
+        //  Debug.Log("Health Slider Updated: " + healthSlider.value);
+
+       
     }
 
 
@@ -33,14 +38,11 @@ public class Player_health : MonoBehaviour
         health = Mathf.Max(health + heal,0);
     }
 
-    public void CheckDeath() 
-    { 
-      
-    }
+ 
 
     public void Update()
     {
-       CheckDeath();
+       
         
         if (healthSlider.value != health)
         {
