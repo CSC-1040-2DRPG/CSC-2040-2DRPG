@@ -57,8 +57,7 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
         UpdateAnimation();
 
         // play death animation when health = 0
-        if
-           (playerDataHandler.instance.GetComponentInChildren<Player_health>().health == 0f && playerDataHandler.instance.GetComponentInChildren<Player_health>().isDead == false)
+        if (playerDataHandler.instance.GetComponentInChildren<Player_health>().health == 0f && playerDataHandler.instance.GetComponentInChildren<Player_health>().isDead == false)
         {
             playerDataHandler.instance.GetComponentInChildren<Player_health>().isDead = true;
 
@@ -67,10 +66,6 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
 
             //disable player controller after death 
             GetComponent<Player_Controller>().enabled = false;
-           
-           
-
-
         }
     }
 
@@ -175,11 +170,7 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
         else if (_moveDir.y < 0) // If we're Moving down
         {
             _animator.CrossFade(_animMoveDown, 0);
-        }
-
-       
-
-        
+        }        
 
     }
 
