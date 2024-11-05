@@ -16,6 +16,12 @@ public class Weapon_parent : MonoBehaviour
     //flag to block repeated attacks 
     private bool attackBlocked;
 
+    private void Start(){
+        //diable components on start
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
+    }
+
     private void Update()
     {
         // Have weapon follow mouse pointer direction
@@ -55,9 +61,12 @@ public class Weapon_parent : MonoBehaviour
         }
         else
         {
+            //make sword visable and colliable
+            GetComponent<BoxCollider2D>().enabled = true;
+            GetComponentInChildren<SpriteRenderer>().enabled = true;
             //trigger animation 
-            animator.CrossFade(Animator.StringToHash("WeaponAttack"), 0);
-            Debug.Log("WeaponAttack animation called!");
+            Debug.Log("Attack called!");
+            animator.Play("WeaponAttack");
             attackBlocked = true;
             StartCoroutine(DelayAttack());
         }
@@ -69,6 +78,9 @@ public class Weapon_parent : MonoBehaviour
         //wait for delay before allowing player to attack again
         yield return new WaitForSeconds(delay);
         attackBlocked = false;
+        //make sword invisible and turn off collider
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
     }
 
     private void OnDrawGizmoSelected()
