@@ -10,8 +10,10 @@ using UnityEngine;
 
 public class Player_Controller : MonoBehaviour, IDataPersistence
 {
-
     private Rigidbody2D MyRigidbody2D;
+
+  
+
     #region Enums (to assign words affectively to represent numbers
     private enum Directions {UP, DOWN, LEFT, RIGHT }
     #endregion
@@ -64,23 +66,20 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
         UpdateAnimation();
 
         // play death animation when health = 0
-
-
-
-        if (playerDataHandler.instance.GetComponentInChildren<Player_health>().health == 0f && playerDataHandler.instance.GetComponentInChildren<Player_health>().isDead == false)
-
+        if
+           ( playerDataHandler.instance.GetComponentInChildren<Player_health>().isDead == true && playerDataHandler.instance.GetComponentInChildren<Player_health>().health == 0f )
         {
-
+    
             _animator.CrossFade(Animator.StringToHash("player_death"), 0);
 
-
+           
             Debug.Log("player died");
-
+           
             //disable player controller after death 
             GetComponent<Player_Controller>().enabled = false;
 
 
-
+           
         }
     }
 
@@ -185,7 +184,11 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
         else if (_moveDir.y < 0) // If we're Moving down
         {
             _animator.CrossFade(_animMoveDown, 0);
-        }        
+        }
+
+       
+
+        
 
     }
 
@@ -203,4 +206,6 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
     #endregion
 
         
-   }
+   
+
+}
