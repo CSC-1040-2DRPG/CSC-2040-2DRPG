@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player_health : MonoBehaviour
+public class Enemy_health : MonoBehaviour
 {
     public Slider healthSlider;
     public float maxHealth = 100f;
     public float health;
     private Animator animator;
     public bool isDead;
-    public int damage = 10;
 
 
     void Start(){
@@ -53,13 +52,6 @@ public class Player_health : MonoBehaviour
    
         }
     }
-
-    public void LoadData(GameData data){
-        health = data.playerHealth;
-    }
-
-    public void SaveData(GameData data){
-        data.playerHealth = health;
-    }
 }
+
 
