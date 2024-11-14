@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Chase : MonoBehaviour
 {
-    public GameObject player;
-   public GameObject Square;
 
     public int damage = 10;
     public float speed;
@@ -26,10 +24,6 @@ public class Chase : MonoBehaviour
             
             // call to TakeDamage function -> inside Player_health script 
             player.GetComponentInChildren<Player_health>().TakeDamage(damage);
-
-            //Call to TakeDamage Function -> inside Enemy_health Script
-            Square.GetComponentInChildren<Enemy_health>().TakeDamage(player.GetComponentInChildren<Player_health>().playerDamage);
-            
         }
     }
 

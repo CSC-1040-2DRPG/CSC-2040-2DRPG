@@ -86,6 +86,7 @@ public class DataPesistenceManager : MonoBehaviour
             return;
         }
 
+        this.dataPersistenceObjects = FindAllDataPersistenceObjects();
         //get data to be saved from all scripts inheriting IDataPersistence
         foreach (IDataPersistence dataObj in dataPersistenceObjects) 
         {

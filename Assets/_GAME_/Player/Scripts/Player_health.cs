@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player_health : MonoBehaviour
+public class Player_health : MonoBehaviour, IDataPersistence
 {
     public Slider healthSlider;
     public float maxHealth = 100f;

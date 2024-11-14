@@ -25,10 +25,9 @@ public class Enemy_health : MonoBehaviour
         healthSlider.value = health;
 
       
-         Debug.Log("Health Updated: " + health);
-          Debug.Log("Health Slider Updated: " + healthSlider.value);
-
-       
+        Debug.Log("Health Updated: " + health);
+        Debug.Log("Health Slider Updated: " + healthSlider.value);
+    
     }
 
 
