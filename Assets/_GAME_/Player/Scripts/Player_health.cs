@@ -10,7 +10,7 @@ public class Player_health : MonoBehaviour
     public float health;
     private Animator animator;
     public bool isDead;
-    public int damage = 10;
+    public int playerDamage = 50;
 
 
     void Start(){

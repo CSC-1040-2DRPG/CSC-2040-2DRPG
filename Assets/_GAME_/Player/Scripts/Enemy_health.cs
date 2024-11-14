@@ -8,26 +8,25 @@ public class Enemy_health : MonoBehaviour
     public Slider healthSlider;
     public float maxHealth = 100f;
     public float health;
-    private Animator animator;
-    public bool isDead;
+
+
 
 
     void Start(){
         health = maxHealth;
         healthSlider.maxValue = maxHealth;
         healthSlider.value = health;
-        isDead = false;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float playerDamage)
     {
-        health = Mathf.Max(health - damage, 0);
+        health = Mathf.Max(health - playerDamage, 0);
        
         healthSlider.value = health;
 
       
-        // Debug.Log("Health Updated: " + health);
-        //  Debug.Log("Health Slider Updated: " + healthSlider.value);
+         Debug.Log("Health Updated: " + health);
+          Debug.Log("Health Slider Updated: " + healthSlider.value);
 
        
     }

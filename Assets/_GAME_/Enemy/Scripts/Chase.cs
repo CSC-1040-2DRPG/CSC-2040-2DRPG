@@ -28,7 +28,7 @@ public class Chase : MonoBehaviour
             player.GetComponentInChildren<Player_health>().TakeDamage(damage);
 
             //Call to TakeDamage Function -> inside Enemy_health Script
-            Square.GetComponentInChildren<Enemy_health>().TakeDamage(damage);
+            Square.GetComponentInChildren<Enemy_health>().TakeDamage(player.GetComponentInChildren<Player_health>().playerDamage);
             
         }
     }
