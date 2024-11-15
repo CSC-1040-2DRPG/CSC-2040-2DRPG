@@ -9,6 +9,7 @@ public class Chase : MonoBehaviour
     public int damage = 10;
     public float speed;
     public Enemy_health health;
+    public int squareCurrency = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,10 @@ public class Chase : MonoBehaviour
 
             Destroy(gameObject);
             print("Square has died.");
+            
+            
+
+            player.GetComponentInChildren<Player_Currency>().addCurrency(squareCurrency);
         }
     }
 
