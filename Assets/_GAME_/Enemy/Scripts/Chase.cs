@@ -5,13 +5,15 @@ using UnityEngine;
 public class Chase : MonoBehaviour
 {
 
+
     public int damage = 10;
     public float speed;
+    public Enemy_health health;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        health = GetComponentInChildren<Enemy_health>();
     }
 
     // Detect collision with player
@@ -27,9 +29,24 @@ public class Chase : MonoBehaviour
         }
     }
 
+
+    public void Squaredeath(float health)
+    {
+        if (health == 0)
+        {
+
+            Destroy(gameObject);
+            print("Square has died.");
+        }
+    }
+
+
     // Update is called once per frame
     void Update()
     {
+        //If health is 0, remove the square
+        Squaredeath(health.GetEnemyHealth());
+
         // Chase the player
             transform.position = Vector2.MoveTowards(transform.position, GameObject.FindWithTag("Player").transform.position, speed * Time.deltaTime);
     }

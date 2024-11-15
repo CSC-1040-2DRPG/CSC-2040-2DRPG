@@ -25,11 +25,17 @@ public class Enemy_health : MonoBehaviour
         healthSlider.value = health;
 
       
-        Debug.Log("Health Updated: " + health);
-        Debug.Log("Health Slider Updated: " + healthSlider.value);
+       // Debug.Log("Health Updated: " + health);
+       // Debug.Log("Health Slider Updated: " + healthSlider.value);
     
     }
 
+
+    public float GetEnemyHealth()
+    {
+        return health;
+    }
+  
 
     public void HealHealth (float heal)
     {
@@ -41,7 +47,7 @@ public class Enemy_health : MonoBehaviour
     public void Update()
     {
        
-        
+
         if (healthSlider.value != health)
         {
             healthSlider.value = health;
