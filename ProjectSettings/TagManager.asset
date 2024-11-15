@@ -9,7 +9,6 @@ TagManager:
   - Item
   - checkpoint
   - Weapon
-  - Spawner
   layers:
   - Default
   - TransparentFX
@@ -64,9 +63,6 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1989671415
-    locked: 0
-  - name: Spawner
-    uniqueID: 3022171863
     locked: 0
   - name: UI
     uniqueID: 3249784101
