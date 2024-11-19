@@ -12,11 +12,11 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] private GameObject dialoguePanel;
 
-    [SerializeField] private TextMeshProUGUI dialogueText;
+    //[SerializeField] private TestMeshProGUI dialogueText;
 
     private Story currentStory;
 
-    public bool dialogueIsPlaying { get; private set; }
+    private bool dialogueIsPlaying;
 
     private void Awake()
     {
@@ -48,15 +48,15 @@ public class DialogueManager : MonoBehaviour
         }
 
         //handle continuing to the next line in the dialogue when submit is pressed
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-        ContinueStory();
-        }
+        //if (InputManager.GetInstance().GetSubmitPressed())
+        //{
+            //ContinueStory();
+        //}
     }
 
-    public void EnterDialogueMode(TextAsset inkJSON)
+    public void EnterDialogueMode(TextAsset inkJson)
     {
-        currentStory = new Story(inkJSON.text);
+        //currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
 
@@ -67,14 +67,14 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
-        dialogueText.text = "";
+        //dialogueText.text = "";
     }
 
     private void ContinueStory()
     {
         if (currentStory.canContinue)
         {
-            dialogueText.text = currentStory.Continue();
+            //dialogueText.text = currentStory.Continue();
         }
         else
         {

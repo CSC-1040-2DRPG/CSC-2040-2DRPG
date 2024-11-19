@@ -92,12 +92,6 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
             finalMoveSpeed = _moveSpeed * sprintMultiplier;
         }
         MovementUpdate(); //In Physics System
-
-        //freezes player if in dialogue
-        if (DialogueManager.GetInstance().dialogueIsPlaying)
-        {
-            return;
-        }
     }
 
     #endregion
