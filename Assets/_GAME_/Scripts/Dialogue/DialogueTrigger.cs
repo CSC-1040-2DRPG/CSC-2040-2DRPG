@@ -10,42 +10,43 @@ public class DialogueTrigger : MonoBehaviour
     [Header("Ink JSON")]
     [SerializeField] private TextAsset inkJSON;
 
-    private bool playerinRange;
+    private bool playerInRange;
+
     private void Awake()
     {
-        playerinRange = false;
+        playerInRange = false;
         visualCue.SetActive(false);
+
     }
-    
+
     private void Update()
     {
-        if (playerinRange)
+        if (playerInRange)
         {
             visualCue.SetActive(true);
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Debug.Log(inkJSON.text);
+                //call dialoguemanager
             }
-        }
-        else
-        {
-            visualCue.SetActive(false);
-        }
+        }    
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Player")
+      if (collider.gameObject.tag == "Player")
         {
-            playerinRange = true;
+            playerInRange = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-    if (collider.gameObject.tag == "Player")
+        if (collider.gameObject.tag == "Player")
         {
-            playerinRange = false;
+            playerInRange = false;
         }
-    }
+
+        }
+
+
 }

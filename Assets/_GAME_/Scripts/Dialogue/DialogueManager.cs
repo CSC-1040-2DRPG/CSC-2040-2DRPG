@@ -50,7 +50,7 @@ public class DialogueManager : MonoBehaviour
         //handle continuing to the next line in the dialogue when submit is pressed
         //if (InputManager.GetInstance().GetSubmitPressed())
         //{
-            //ContinueStory();
+        //ContinueStory();
         //}
     }
 
