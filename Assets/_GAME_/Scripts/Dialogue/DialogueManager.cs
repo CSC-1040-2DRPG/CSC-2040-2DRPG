@@ -6,8 +6,6 @@ using Ink.Runtime;
 
 public class DialogueManager : MonoBehaviour
 {
-    private static DialogueManager instance;
-
     [Header("Dialogue UI")]
 
     [SerializeField] private GameObject dialoguePanel;
@@ -16,10 +14,12 @@ public class DialogueManager : MonoBehaviour
 
     private Story currentStory;
 
-    private bool dialogueIsPlaying;
+    public bool dialogueIsPlaying { get; private set; }
+
+    private static DialogueManager instance;
 
     private void Awake()
-    {
+    { 
         if (instance != null)
         {
             Debug.LogWarning("Found more than one Dialogue Manager in the scene");
