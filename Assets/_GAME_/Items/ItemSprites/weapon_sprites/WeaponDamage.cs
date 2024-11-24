@@ -14,7 +14,8 @@ public class WeaponDamage : MonoBehaviour
 
             enemy.GetComponentInChildren<Enemy_health>().TakeDamage(damageAmount);
         }
-        else
+
+        if (collision.gameObject.CompareTag("Spawner"))
         {
             GameObject Spawner = collision.gameObject;
             Spawner.GetComponentInChildren<Spawner_health>().TakeDamage(damageAmount);
