@@ -10,7 +10,6 @@ public class Player_health : MonoBehaviour, IDataPersistence
     public float health;
     private Animator animator;
     public bool isDead;
-    public int playerDamage = 50;
 
 
     void Start(){

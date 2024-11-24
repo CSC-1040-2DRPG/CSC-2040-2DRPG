@@ -1,0 +1,3 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="BG" style="flex-grow: 1; background-color: rgba(103, 205, 255, 0.33); justify-content: space-between; align-items: center; align-self: auto; margin-top: 5%; padding-top: 3%; margin-right: 5%; margin-bottom: 5%; margin-left: 5%; padding-bottom: 3%; padding-right: 3%; padding-left: 3%; flex-direction: row; flex-wrap: wrap; transform-origin: center; flex-basis: auto; width: auto; height: auto;" />
+</ui:UXML>

@@ -7,7 +7,7 @@ using UnityEngine;
 [Serializable]
 public class Inventory
 {
-    [SerializeField] private List<ItemStack> itemList;
+    [SerializeField] public List<ItemStack> itemList;
     [SerializeField] public ItemStack activeItem1;
     [SerializeField] public ItemStack activeItem2;
 
@@ -18,7 +18,14 @@ public class Inventory
     }
 
     public void AddItem(ItemStack item){
-        itemList.Add(item);
+        bool itemExists = false;
+        foreach(ItemStack i in itemList){
+            if (i.itemType == item.itemType){
+                i.stackAmount += item.stackAmount;
+                itemExists = true;
+            }
+        }
+        if(!itemExists) itemList.Add(item);
         Debug.Log(itemList.Count);
         activeItem1 = item;
     }

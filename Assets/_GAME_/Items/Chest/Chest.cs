@@ -42,7 +42,7 @@ public class Chest : MonoBehaviour, IDataPersistence
         opened = true;
         gameObject.GetComponent<SpriteRenderer>().sprite = openSprite;
 
-        player.inventory.AddItem(new ItemStack(ItemStack.ItemType.Sword));
+        player.inventory.AddItem(itemName);
     }
 
     public void LoadData(GameData data) 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [SelectionBase] //Selects game objects that has this script on it when clicking any of the subobjects in the scene
 
@@ -11,8 +12,6 @@ using UnityEngine;
 public class Player_Controller : MonoBehaviour, IDataPersistence
 {
     private Rigidbody2D MyRigidbody2D;
-
-  
 
     #region Enums (to assign words affectively to represent numbers
     private enum Directions {UP, DOWN, LEFT, RIGHT }
@@ -114,6 +113,12 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
 
         if (Input.GetMouseButtonDown(0)) UseItem(inventory.activeItem1);
         if (Input.GetMouseButtonDown(1)) UseItem(inventory.activeItem2);
+
+        if(Input.GetKeyDown(KeyCode.Tab)){
+            gameObject.transform.Find("Canvas").transform.Find("InvScreen").GetComponent<UIDocument>().enabled = true;
+            gameObject.transform.Find("Canvas").transform.Find("InvScreen").GetComponent<PlayerInvScreen>().enabled = true;
+            enabled = false;
+        }
         
         //print(_moveDir);   --> for testing purposes to make sure game is intaking the Inputs correctly
     }
