@@ -11,9 +11,16 @@ public class WeaponDamage : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             GameObject enemy = collision.gameObject;
-            
+
             enemy.GetComponentInChildren<Enemy_health>().TakeDamage(damageAmount);
         }
+        else
+        {
+            GameObject Spawner = collision.gameObject;
+            Spawner.GetComponentInChildren<Spawner_health>().TakeDamage(damageAmount);
+
+        }
+
     }
 }
 
