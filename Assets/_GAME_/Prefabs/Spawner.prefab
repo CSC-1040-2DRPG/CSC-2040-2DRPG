@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 1127344688909437206}
   - component: {fileID: 3894973270415280190}
   m_Layer: 5
-  m_Name: Healthbar
+  m_Name: spawnerHealthSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 779b5173a0689c449a3589549237922a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthSlider: {fileID: 0}
+  healthSlider: {fileID: 1127344688909437206}
   maxHealth: 100
   health: 0
 --- !u!1 &8017434934530478407
@@ -382,7 +382,7 @@ GameObject:
   - component: {fileID: 314960913235434182}
   m_Layer: 0
   m_Name: Spawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -467,7 +467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cafb272daedc644ba9d791bdd2ffe95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  squarePrefab: {fileID: 1128988675723429617, guid: 96f723d9a4ff83748a38889388a64c54, type: 3}
+  squarePrefab: {fileID: 7079430032011035319, guid: 4b5486d63fc065c43b74130022b0b3e1, type: 3}
   squareInterval: 2.5
 --- !u!114 &8904475083138156498
 MonoBehaviour:
