@@ -48,6 +48,10 @@ public class Chase : MonoBehaviour
         Squaredeath(health.GetEnemyHealth());
 
         // Chase the player
+        if (GameObject.FindWithTag("Player") != null)
+        {
             transform.position = Vector2.MoveTowards(transform.position, GameObject.FindWithTag("Player").transform.position, speed * Time.deltaTime);
+
+        }
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class Player_health : MonoBehaviour, IDataPersistence
 {
@@ -10,6 +11,8 @@ public class Player_health : MonoBehaviour, IDataPersistence
     public float health;
     private Animator animator;
     public bool isDead;
+    public static Action OnPlayerDeath;
+    public static Action OnEnemyDeath;
 
 
     void Start(){
@@ -38,7 +41,23 @@ public class Player_health : MonoBehaviour, IDataPersistence
         health = Mathf.Max(health + heal,0);
     }
 
- 
+ private void Die()
+    {
+        Debug.Log("I am Dead!");
+        Destroy(gameObject);
+
+        if (this.CompareTag("Player"))
+        {
+            Time.timeScale = 0;
+            OnPlayerDeath?.Invoke(); //? means it is not invoked if it is null 
+        }
+        else
+        {
+            OnEnemyDeath?.Invoke(); //Then it is an enemy -- then invoke
+        }
+    }
+
+
 
     public void Update()
     {
