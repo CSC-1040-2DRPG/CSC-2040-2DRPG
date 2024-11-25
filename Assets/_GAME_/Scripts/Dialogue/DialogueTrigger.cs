@@ -21,6 +21,7 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(DialogueManager.GetInstance());
         if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying)
         {
             visualCue.SetActive(true);
@@ -28,7 +29,7 @@ public class DialogueTrigger : MonoBehaviour
             {
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
             }
-        }    
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
