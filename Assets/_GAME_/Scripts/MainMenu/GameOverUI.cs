@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameOverUI : MonoBehaviour
 {
     [SerializeField]
-    private TextConsoleSimulator ScoreValueText; //How many enemies have been killed
+    private Text ScoreValueText; //How many enemies have been killed
 
     private int score = 0;
 
@@ -38,8 +38,8 @@ public class GameOverUI : MonoBehaviour
    
     private void ActivateGameObject()
     {
-       // this.ActivateGameObject(true);
-        //ScoreValueText.text = score.ToString(); //sets text of UI to the value of Score
+      // this.ActivateGameObject(true);
+       // ScoreValueText.text = score.ToString(); //sets text of UI to the value of Score
     }
 
 }
