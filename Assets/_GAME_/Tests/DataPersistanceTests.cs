@@ -10,7 +10,7 @@ public class MyTest
     {
         GameObject testObject = new GameObject();
         //I cannot get our custom classes to load in a test class.
-        DataPersistanceManager dataManager = new DataPersistanceManager();
+        //DataPersistanceManager dataManager = new DataPersistanceManager();
     }
 
     [Test]
