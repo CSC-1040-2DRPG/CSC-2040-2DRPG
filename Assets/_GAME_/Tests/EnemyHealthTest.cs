@@ -9,25 +9,27 @@ public class EnemyHealthTest
     [SetUp]
     public void Setup()
     {
-        spawner = new GameObject("Spawner");
+        // Load the spawner prefab from your project's Resources folder
+        spawner = Object.Instantiate(Resources.Load<GameObject>("Spawner"));
 
-
+        // Ensure the prefab has the Spawner_health component
+        Assert.IsNotNull(spawner.GetComponent<Spawner_health>(), "The spawner prefab must have the Spawner_health script.");
     }
 
     [Test]
     public void SpawnerHealthTest()
     {
-        // get spawner health
+        // Act: Get Spawner health from the Spawner_health component
         float result = spawner.GetComponent<Spawner_health>().GetEnemyHealth();
 
-        // health should be 100
+        
         Assert.AreEqual(100, result, "The enemy health should initially be 100.");
     }
 
     [TearDown]
     public void TearDown()
     {
-        // Clean up after the test
+        // Clean up the instantiated spawner after the test
         Object.Destroy(spawner);
     }
 }
