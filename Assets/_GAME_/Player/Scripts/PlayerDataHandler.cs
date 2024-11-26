@@ -23,7 +23,7 @@ public class playerDataHandler : MonoBehaviour, IDataPersistence
     private void Start(){
         //using this method instead of loadData because loadData is called whenever a new scene is loaded.
         //that would teleport the player back a scene so instead the player is teleported only on start
-        GameData data = DataPesistenceManager.instance.gameData;
+        GameData data = DataPersistenceManager.instance.gameData;
         if (data == null) return;
 
         SceneManager.LoadScene(data.playerSceneName, LoadSceneMode.Single); //set player scene
@@ -31,9 +31,9 @@ public class playerDataHandler : MonoBehaviour, IDataPersistence
     }
 
     public void OnApplicationQuit(){
-        DataPesistenceManager.instance.gameData.playerSceneName = SceneManager.GetActiveScene().name; //store player scene
-        DataPesistenceManager.instance.gameData.playerPosition = transform.position; //store player position
-        DataPesistenceManager.instance.SaveGame();
+        DataPersistenceManager.instance.gameData.playerSceneName = SceneManager.GetActiveScene().name; //store player scene
+        DataPersistenceManager.instance.gameData.playerPosition = transform.position; //store player position
+        DataPersistenceManager.instance.SaveGame();
     }
 
     //saving and loading of player data

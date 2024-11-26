@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 using System.IO;
 using UnityEngine.SceneManagement;
-public class DataPesistenceManager : MonoBehaviour
+public class DataPersistenceManager : MonoBehaviour
 {
     [Header("Debug")]
     [SerializeField] private bool disableSaving;
@@ -15,7 +15,7 @@ public class DataPesistenceManager : MonoBehaviour
     public GameData gameData;
     public FileDataHandler dataHandler;
     private List<IDataPersistence> dataPersistenceObjects;
-    public static DataPesistenceManager instance {get; private set;}
+    public static DataPersistenceManager instance {get; private set;}
 
     private void Awake() {
         if(instance != null){

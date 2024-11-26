@@ -14,7 +14,7 @@ public class SceneTransfer : MonoBehaviour
         print("trigger entered");
         if(other.tag== "Player") {
             print("switching scene to " + sceneName);
-                DataPesistenceManager.instance.SaveGame();
+                DataPersistenceManager.instance.SaveGame();
                 SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
         }
     }
