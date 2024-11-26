@@ -20,7 +20,7 @@ public class EnemyHealthTest
     public void SpawnerHealthTest()
     {
         // Act: Get Spawner health from the Spawner_health component
-        float result = spawner.GetComponent<Spawner_health>().GetEnemyHealth();
+        float result = spawner.GetComponentInChildren<Spawner_health>().GetEnemyHealth();
 
         
         Assert.AreEqual(100f, result, "The enemy health should initially be 100.");
