@@ -8,6 +8,5 @@ using UnityEngine.TestTools;
 
 public class PlayerStatsTest : MonoBehaviour
 {
-    
   
 }
