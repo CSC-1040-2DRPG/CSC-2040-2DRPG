@@ -28,4 +28,12 @@ public class Inventory
         if(!itemExists) itemList.Add(item);
         Debug.Log(itemList.Count);
     }
+
+    public void setActive1(ItemStack item){
+        activeItem1 = item;
+    }
+
+    public void setActive2(ItemStack item){
+        activeItem2 = item;
+    }
 }
