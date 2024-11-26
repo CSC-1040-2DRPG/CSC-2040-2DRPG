@@ -27,6 +27,5 @@ public class Inventory
         }
         if(!itemExists) itemList.Add(item);
         Debug.Log(itemList.Count);
-        activeItem1 = item;
     }
 }

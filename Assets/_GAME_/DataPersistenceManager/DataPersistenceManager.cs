@@ -39,7 +39,7 @@ public class DataPesistenceManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    public void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
         LoadGame();
     }

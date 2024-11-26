@@ -50,4 +50,8 @@ public class ItemStack
         }
         Debug.Log(itemType + " used! " + stackAmount + " remaining.");
     }
+
+    public String getName(){
+        return itemType.ToString();
+    }
 }
