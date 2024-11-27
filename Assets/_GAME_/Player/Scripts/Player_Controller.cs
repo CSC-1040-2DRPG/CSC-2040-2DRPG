@@ -40,6 +40,7 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
     private readonly int _animMoveDown = Animator.StringToHash("Anim_Player_Move_Down");
     private bool _isSprinting;
     private float finalMoveSpeed;
+    private bool playerStop;
 
 
     public Transform lastBonfire;
