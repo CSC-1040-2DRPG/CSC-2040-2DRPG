@@ -28,6 +28,8 @@ public class DialogueTrigger : MonoBehaviour
             {
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
             }
+            //else
+            //visualCue.SetActive(false);
         }
     }
 

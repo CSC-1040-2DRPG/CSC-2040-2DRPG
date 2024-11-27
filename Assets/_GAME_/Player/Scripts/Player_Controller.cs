@@ -93,12 +93,13 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
         }
         MovementUpdate(); //In Physics System
 
-
         //freezes player if in dialogue
-        //if (DialogueManager.GetInstance().dialogueIsPlaying)
-        //{
-          //  return;
-        //}
+        var dialogueManager = DialogueManager.GetInstance();
+        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            _rb.velocity = Vector2.zero;
+            return;
+        }
     }
 
     #endregion

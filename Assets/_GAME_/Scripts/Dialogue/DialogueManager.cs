@@ -19,14 +19,17 @@ public class DialogueManager : MonoBehaviour
     private static DialogueManager instance;
 
     private void Awake()
-    { 
+    {
         if (instance != null)
         {
             Debug.LogWarning("Found more than one Dialogue Manager in the scene");
         }
-        instance = this;
+        else
+        {
+            instance = this;
+            Debug.Log("DialogueManager initialized.");
+        }
     }
-
 
     public static DialogueManager GetInstance()
     {
