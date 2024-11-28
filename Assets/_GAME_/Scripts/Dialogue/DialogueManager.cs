@@ -6,6 +6,9 @@ using Ink.Runtime;
 
 public class DialogueManager : MonoBehaviour
 {
+    [Header("Params")]
+    [SerializeField] private float typingSpeed = 0.04f;
+
     [Header("Dialogue UI")]
 
     [SerializeField] private GameObject dialoguePanel;
@@ -15,6 +18,10 @@ public class DialogueManager : MonoBehaviour
     private Story currentStory;
 
     public bool dialogueIsPlaying { get; private set; }
+
+    private bool canContinueToNextLine = false;
+
+    private Coroutine displayLineCoroutine;
 
     private static DialogueManager instance;
 
@@ -27,7 +34,7 @@ public class DialogueManager : MonoBehaviour
         {
             Debug.LogWarning("Found more than one Dialogue Manager in the scene");
         }
-            instance = this;
+        instance = this;
     }
 
     public static DialogueManager GetInstance()
@@ -54,9 +61,9 @@ public class DialogueManager : MonoBehaviour
         }
 
         //handle continuing to the next line in the dialogue when submit is pressed
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (canContinueToNextLine && Input.GetKeyDown(KeyCode.Space))
         {
-        ContinueStory();
+            ContinueStory();
             cooldownTimer = dialogueCooldown; //reset the cooldown
         }
     }
@@ -85,17 +92,36 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentStory.canContinue)
         {
-            dialogueText.text = currentStory.Continue();
+            // set text for the current dialogue line
+            if(displayLineCoroutine != null)
+            {
+                StopCoroutine(displayLineCoroutine);
+            }
+        displayLineCoroutine = StartCoroutine(DisplayLine(currentStory.Continue()));
         }
-        else
-        {
-       
+        else{
+
             ExitDialogueMode();
         }
     }
 
-    private IEnumerator DisplayLine(string line){
+    private IEnumerator DisplayLine(string line)
+    {
         //empty the dialogue text
-        dialogueText.text - "";
+        dialogueText.text = "";
+
+        //display each letter one at a time
+        foreach (char letter in line.ToCharArray())
+        {
+            //supposed to skip dialogue, doesnt work right now
+            //if (Input.GetKeyDown(KeyCode.Space))
+            //{
+              //  dialogueText.text = line;
+              // break;
+            //}
+            dialogueText.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+        canContinueToNextLine = true;
     }
 }
