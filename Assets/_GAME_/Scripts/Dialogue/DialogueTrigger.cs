@@ -11,6 +11,7 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private TextAsset inkJSON;
 
     private bool playerInRange;
+    private bool dialogueStarted = false;
 
     private void Awake()
     {
@@ -21,21 +22,41 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Update()
     {
-        if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying)
+        if (playerInRange && !dialogueStarted)
         {
-            visualCue.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.Space))
+            visualCue.SetActive(!DialogueManager.GetInstance().dialogueIsPlaying);
+
+            if (!DialogueManager.GetInstance().dialogueIsPlaying && Input.GetKeyDown(KeyCode.Space))
             {
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+                dialogueStarted = true;
             }
-            //else
-            //visualCue.SetActive(false);
         }
+        else
+        {
+            visualCue.SetActive(false);
+        }
+    }
+
+    // Reset when dialogue ends
+    private void OnEnable()
+    {
+        DialogueManager.OnDialogueEnd += ResetDialogueTrigger;
+    }
+
+    private void OnDisable()
+    {
+        DialogueManager.OnDialogueEnd -= ResetDialogueTrigger;
+    }
+
+    private void ResetDialogueTrigger()
+    {
+        dialogueStarted = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-      if (collider.gameObject.tag == "Player")
+        if (collider.CompareTag("Player"))
         {
             playerInRange = true;
         }
@@ -43,12 +64,10 @@ public class DialogueTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Player")
+        if (collider.CompareTag("Player"))
         {
             playerInRange = false;
+            visualCue.SetActive(false);
         }
-
-        }
-
-
+    }
 }

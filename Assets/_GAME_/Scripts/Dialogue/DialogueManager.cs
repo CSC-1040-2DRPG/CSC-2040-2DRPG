@@ -18,17 +18,16 @@ public class DialogueManager : MonoBehaviour
 
     private static DialogueManager instance;
 
+    [SerializeField] private float dialogueCooldown = 0.5f; // Half a second cooldown
+    private float cooldownTimer = 0f;
+
     private void Awake()
     {
         if (instance != null)
         {
             Debug.LogWarning("Found more than one Dialogue Manager in the scene");
         }
-        else
-        {
             instance = this;
-            Debug.Log("DialogueManager initialized.");
-        }
     }
 
     public static DialogueManager GetInstance()
@@ -44,6 +43,10 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
+        if (cooldownTimer > 0)
+        {
+            cooldownTimer -= Time.deltaTime;
+        }
         //return right away if dialogue isnt playing
         if (!dialogueIsPlaying)
         {
@@ -54,6 +57,7 @@ public class DialogueManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
         ContinueStory();
+            cooldownTimer = dialogueCooldown; //reset the cooldown
         }
     }
 
@@ -66,8 +70,12 @@ public class DialogueManager : MonoBehaviour
         ContinueStory();
     }
 
+    public delegate void DialogueEnd();
+    public static event DialogueEnd OnDialogueEnd;
+
     private void ExitDialogueMode()
     {
+        Debug.Log("Exiting Dialogue Mode"); // Debug this
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
@@ -81,7 +89,13 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+       
             ExitDialogueMode();
         }
+    }
+
+    private IEnumerator DisplayLine(string line){
+        //empty the dialogue text
+        dialogueText.text - "";
     }
 }
