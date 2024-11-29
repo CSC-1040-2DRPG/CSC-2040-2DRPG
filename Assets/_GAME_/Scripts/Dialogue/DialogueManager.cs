@@ -15,6 +15,11 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI dialogueText;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip dialogueTypingSoundClip;
+    private AudioSource audioSource;
+
+
     private Story currentStory;
 
     public bool dialogueIsPlaying { get; private set; }
@@ -35,6 +40,8 @@ public class DialogueManager : MonoBehaviour
             Debug.LogWarning("Found more than one Dialogue Manager in the scene");
         }
         instance = this;
+
+        audioSource = this.gameObject.AddComponent<AudioSource>();
     }
 
     public static DialogueManager GetInstance()
@@ -113,13 +120,8 @@ public class DialogueManager : MonoBehaviour
         //display each letter one at a time
         foreach (char letter in line.ToCharArray())
         {
-            //supposed to skip dialogue, doesnt work right now
-            //if (Input.GetKeyDown(KeyCode.Space))
-            //{
-              //  dialogueText.text = line;
-              // break;
-            //}
             dialogueText.text += letter;
+            audioSource.PlayOneShot(dialogueTypingSoundClip);
             yield return new WaitForSeconds(typingSpeed);
         }
         canContinueToNextLine = true;
