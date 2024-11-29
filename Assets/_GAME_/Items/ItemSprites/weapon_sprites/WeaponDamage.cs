@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class WeaponDamage : MonoBehaviour
 {
+    
     public float damageAmount = 20;
     void OnTriggerEnter2D(Collider2D collision)
     {
