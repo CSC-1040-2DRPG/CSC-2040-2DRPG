@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f535100d4722a4b66aa054ef67867550
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - SFXSource: {instanceID: 0}
+  - swordsound1: {fileID: 8300000, guid: 77f8f0532490544dc988d9f6c9cd2df0, type: 3}
+  - swordsound2: {instanceID: 0}
+  - swordsound3: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

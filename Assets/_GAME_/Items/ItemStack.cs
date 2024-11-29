@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 [Serializable]
 public class ItemStack
 {
@@ -17,6 +19,12 @@ public class ItemStack
 
     [SerializeField] public ItemType itemType;
     [SerializeField] public int stackAmount;
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     public ItemStack(ItemType itemType, int stackAmount){
         this.itemType = itemType;
@@ -33,6 +41,8 @@ public class ItemStack
         switch(itemType){
             case ItemType.Sword:
                 playerDataHandler.instance.GetComponentInChildren<Weapon_parent>().Attack();
+                //play sound effect
+                //audioManager.PlaySFX(audioManager.swordsound1);
                 break;
             //use health potion
             case ItemType.HealthPotion:

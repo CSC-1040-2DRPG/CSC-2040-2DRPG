@@ -10,6 +10,7 @@ TagManager:
   - checkpoint
   - Weapon
   - Spawner
+  - Audio
   layers:
   - Default
   - TransparentFX
