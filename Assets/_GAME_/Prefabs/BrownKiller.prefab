@@ -542,6 +542,7 @@ MonoBehaviour:
   damage: 10
   speed: 2
   health: {fileID: 0}
+  rewardAmount: 50
 --- !u!61 &9099795527033054958
 BoxCollider2D:
   m_ObjectHideFlags: 0
