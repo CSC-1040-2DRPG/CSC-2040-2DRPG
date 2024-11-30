@@ -10,6 +10,8 @@ public class Chase : MonoBehaviour
     public float speed;
     public Enemy_health health;
     public int rewardAmount = 50;
+    public float chaseRadius = 5.0f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -49,11 +51,13 @@ public class Chase : MonoBehaviour
         //If health is 0, remove the square
         Squaredeath(health.GetEnemyHealth());
 
-        // Chase the player
-        if (GameObject.FindWithTag("Player") != null)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, GameObject.FindWithTag("Player").transform.position, speed * Time.deltaTime);
 
+        // Chase the player
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null && Vector2.Distance(transform.position, player.transform.position) <= chaseRadius)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         }
+
     }
 }

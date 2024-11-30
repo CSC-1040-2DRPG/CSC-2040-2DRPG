@@ -512,11 +512,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 70
   m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3f84d72d63cdaad479ff4c9483470da7, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -543,6 +543,7 @@ MonoBehaviour:
   speed: 2
   health: {fileID: 0}
   rewardAmount: 50
+  chaseRadius: 5
 --- !u!61 &9099795527033054958
 BoxCollider2D:
   m_ObjectHideFlags: 0
