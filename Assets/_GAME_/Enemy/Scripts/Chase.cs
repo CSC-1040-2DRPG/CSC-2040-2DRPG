@@ -11,6 +11,7 @@ public class Chase : MonoBehaviour
     public Enemy_health health;
     public int rewardAmount = 50;
     public float chaseRadius = 5.0f;
+    private EnemyManager enemyManager;
 
 
     // Start is called before the first frame update
@@ -33,7 +34,7 @@ public class Chase : MonoBehaviour
     }
 
 
-    public void Squaredeath(float health)
+    public void Squaredeath(float health) //death script
     {
         if (health == 0)
         {
@@ -41,6 +42,11 @@ public class Chase : MonoBehaviour
             Destroy(gameObject);
             print("enemy has died.");
             MoneyManager.Instance.AddMoney(rewardAmount); //add money to player
+
+            if (enemyManager != null)
+            {
+                enemyManager.EnemyKilled();
+            }
         }
     }
 
@@ -50,6 +56,8 @@ public class Chase : MonoBehaviour
     {
         //If health is 0, remove the square
         Squaredeath(health.GetEnemyHealth());
+        enemyManager = FindObjectOfType<EnemyManager>();//Find the instance of EnemyManager in the scene
+
 
 
         // Chase the player
