@@ -27,13 +27,13 @@ public class ItemStack
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
-    public ItemStack(ItemType itemType, int stackAmount, AudioManager audioManager){
+    public ItemStack(ItemType itemType, int stackAmount, AudioManager audioManager) {
         this.itemType = itemType;
         this.stackAmount = stackAmount;
         this.audioManager = audioManager;
     }
 
-    public ItemStack(ItemType itemType){
+    public ItemStack(ItemType itemType) {
         this.itemType = itemType;
         this.stackAmount = 1;
     }
@@ -43,45 +43,54 @@ public class ItemStack
         audioManager = manager;
     }
 
-    public void useItem(){
-        if (audioManager == null){
+    public void useItem() {
+        if (audioManager == null) {
             audioManager = GameObject.FindGameObjectWithTag("Audio")?.GetComponent<AudioManager>();
         }
-            if (stackAmount < 1) return;
-        switch(itemType){
+        if (stackAmount < 1) return;
+        switch (itemType) {
             case ItemType.Sword:
                 playerDataHandler.instance.GetComponentInChildren<Weapon_parent>().Attack();
                 //play sound effect
-                if (audioManager != null)
+                int randomSwordSound = UnityEngine.Random.Range(0, 2);
+                switch (randomSwordSound)
                 {
-                    audioManager.PlaySFX(audioManager.swordswoosh);
+                    case 0:
+                        audioManager.PlaySFX(audioManager.swordsound1);
+                        break;
+                    case 1:
+                        audioManager.PlaySFX(audioManager.swordsound2);
+                        break;
+                    case 2:
+                        audioManager.PlaySFX(audioManager.swordsound3);
+                        break;
                 }
-                else
-                {
-                    Debug.LogError("AudioManager is not assigned!");
-                }
-                break;
-            //use health potion
-            case ItemType.HealthPotion:
-                //check if 
-                if(playerDataHandler.instance.GetComponentInChildren<Player_health>().health >= playerDataHandler.instance.GetComponentInChildren<Player_health>().maxHealth) break;
-                playerDataHandler.instance.GetComponentInChildren<Player_health>().HealHealth(10);
-                stackAmount--;
-                break;
+                        break;
+              
+                    //use health potion
+                    case ItemType.HealthPotion:
+                        //check if 
+                        if (playerDataHandler.instance.GetComponentInChildren<Player_health>().health >= playerDataHandler.instance.GetComponentInChildren<Player_health>().maxHealth) break;
+                        playerDataHandler.instance.GetComponentInChildren<Player_health>().HealHealth(10);
+                        stackAmount--;
+                        audioManager.PlaySFX(audioManager.potionsound);
+                        break;
 
-            case ItemType.ManaPotion:
-                if(playerDataHandler.instance.GetComponentInChildren<Player_mana>().mana >= playerDataHandler.instance.GetComponentInChildren<Player_mana>().maxMana) break;
-                playerDataHandler.instance.GetComponentInChildren<Player_mana>().RecoverMana(10);
-                stackAmount--;
-                break;
+                    case ItemType.ManaPotion:
+                        if (playerDataHandler.instance.GetComponentInChildren<Player_mana>().mana >= playerDataHandler.instance.GetComponentInChildren<Player_mana>().maxMana) break;
+                        playerDataHandler.instance.GetComponentInChildren<Player_mana>().RecoverMana(10);
+                        stackAmount--;
+                        audioManager.PlaySFX(audioManager.potionsound);
+
+                        break;
+                }
+                Debug.Log(itemType + " used! " + stackAmount + " remaining.");
         }
-        Debug.Log(itemType + " used! " + stackAmount + " remaining.");
-    }
 
-    public String getName(){
-        return itemType.ToString();
+        public String getName() {
+            return itemType.ToString();
+        }
+        public String getFormattedName() {
+            return Regex.Replace(itemType.ToString(), "(?<!^)([A-Z])", " $1").Trim();
+        }
     }
-    public String getFormattedName(){
-        return Regex.Replace(itemType.ToString(), "(?<!^)([A-Z])", " $1").Trim();
-    }
-}
