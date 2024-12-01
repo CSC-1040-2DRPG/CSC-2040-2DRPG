@@ -28,6 +28,12 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
 
     [SerializeField] float sprintMultiplier = 2f;
 
+    public float dodgeDistance = 2.0f; // How far the player dodges
+    public float doubleTapTime = 0.3f; // Time allowed between taps
+
+    private float lastTapTime = -1f; // Tracks when the Shift key was last tapped
+
+
     #endregion
 
     #region Internal Data
@@ -64,6 +70,8 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
         GatherInput();
         CalculateFacingDirection();
         UpdateAnimation();
+        DetectDoubleTap();
+
 
         // play death animation when health = 0
         if
@@ -79,7 +87,8 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
             GetComponent<Player_Controller>().enabled = false;
 
 
-           
+
+
         }
     }
 
@@ -219,7 +228,41 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
 
     #endregion
 
-        
-   
+    #region dodge
+    private void DetectDoubleTap()
+    {
+        // Check for Shift key press
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+        {
+            if (Time.time - lastTapTime <= doubleTapTime)
+            {
+                Dodge(); // Call Dodge if double-tapped
+               
+            }
+
+            
+            lastTapTime = Time.time; // Update the last tap time
+        }
+    }
+
+    private void Dodge()
+    {
+        // Get the player's current movement direction
+        Vector3 dodgeDirection = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0).normalized; 
+
+
+        if (dodgeDirection == Vector3.zero) //if no movement, then simply go forward
+        {
+            dodgeDirection = transform.up;
+        }
+
+        transform.position += dodgeDirection * dodgeDistance;  // Move the player in the dodge direction
+
+
+        //Debug.Log("Dodged in direction: " + dodgeDirection);
+
+    }
+    #endregion
+
 
 }
