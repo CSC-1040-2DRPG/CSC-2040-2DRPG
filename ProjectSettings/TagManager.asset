@@ -11,6 +11,7 @@ TagManager:
   - Weapon
   - Spawner
   - Audio
+  - Boulder
   layers:
   - Default
   - TransparentFX
