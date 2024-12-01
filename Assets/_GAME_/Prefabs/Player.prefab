@@ -217,6 +217,7 @@ RectTransform:
   - {fileID: 6035753480512426116}
   - {fileID: 2464766304172329161}
   - {fileID: 5887801633096201374}
+  - {fileID: 6643523674599754877}
   m_Father: {fileID: 2038243620953687956}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -585,6 +586,67 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: -90
+--- !u!1 &4991399020890673445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6643523674599754877}
+  - component: {fileID: 2654138693030079058}
+  - component: {fileID: 7735245079378033815}
+  m_Layer: 5
+  m_Name: HotBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6643523674599754877
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4991399020890673445}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1075925196283052442}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2654138693030079058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4991399020890673445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 23c8376f3f288ec4ba4fc12358a910c3, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: a23d1b517c74c07488858bec16ad1c42, type: 3}
+  m_SortingOrder: 0
+--- !u!114 &7735245079378033815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4991399020890673445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d51650e4f22e47f4e8692fdac2260d94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5015587576063867347
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,12 +972,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory:
     itemList: []
-    activeItem1:
-      itemType: 0
-      stackAmount: 0
-    activeItem2:
-      itemType: 0
-      stackAmount: 0
+    activeItem1: 0
+    activeItem2: 0
 --- !u!114 &3291048770172109643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1094,7 +1152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d8f09a1bdc874040b394b3f21d4e4c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  damageAmount: 5
   animationClipName: PickaxeSwing
   delay: 0.3333333
 --- !u!1 &7459112463793528002
@@ -1369,7 +1427,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 20
-  animator: {fileID: 2198092658476443695}
   animationClipName: SwordAttack
   delay: 0.4
 --- !u!1 &8535454129105824558
