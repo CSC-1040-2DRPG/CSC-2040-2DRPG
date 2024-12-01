@@ -1,3 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="InvContainer" style="width: 150px; height: 150px; -unity-text-align: lower-center; flex-direction: row; justify-content: space-between; align-items: center; align-self: center;" />
+    <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="InvContainer" style="width: 150px; height: 150px; -unity-text-align: lower-center; flex-direction: row; justify-content: space-between; align-items: center; align-self: center;">
+        <ui:VisualElement name="Image" style="flex-grow: 1; background-image: none; height: 100%; width: 100%; align-items: auto; align-self: auto; justify-content: space-between; -unity-background-scale-mode: scale-to-fit; top: -4px;" />
+    </ui:Button>
 </ui:UXML>

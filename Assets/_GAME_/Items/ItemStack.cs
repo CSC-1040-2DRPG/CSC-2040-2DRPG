@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 
@@ -63,5 +64,8 @@ public class ItemStack
 
     public String getName(){
         return itemType.ToString();
+    }
+    public String getFormattedName(){
+        return Regex.Replace(itemType.ToString(), "(?<!^)([A-Z])", " $1").Trim();
     }
 }
