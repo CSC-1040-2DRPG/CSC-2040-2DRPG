@@ -20,9 +20,9 @@ AnimationClip:
   m_PPtrCurves:
   - serializedVersion: 2
     curve:
-    - time: 0
-      value: {fileID: 21300000, guid: be5f72189e503ce448ba808e883d5c3b, type: 3}
     - time: 0.083333336
+      value: {fileID: 21300000, guid: be5f72189e503ce448ba808e883d5c3b, type: 3}
+    - time: 0.16666667
       value: {fileID: 21300000, guid: 56685996245b30f42af2b4c0fcde815b, type: 3}
     - time: 0.25
       value: {fileID: 21300000, guid: 950b362091fcf4e4aacc51f36898ec18, type: 3}
@@ -83,7 +83,7 @@ AnimationClip:
     m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
-    m_CycleOffset: 1
+    m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
     m_LoopTime: 0
     m_LoopBlend: 0
