@@ -122,8 +122,8 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
 
         Inventory inventory = playerDataHandler.instance.inventory;
 
-        if (Input.GetMouseButtonDown(0)) UseItem(inventory.activeItem1);
-        if (Input.GetMouseButtonDown(1)) UseItem(inventory.activeItem2);
+        if (Input.GetMouseButtonDown(0)) inventory.UseActive1();
+        if (Input.GetMouseButtonDown(1)) inventory.UseActive2();
 
         if(Input.GetKeyDown(KeyCode.Tab)){
             gameObject.transform.Find("Canvas").transform.Find("InvScreen").GetComponent<UIDocument>().enabled = true;
@@ -143,10 +143,6 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
         //Time.fixedDeltaTime insures player speed is consistant regardless of FPS
         //multiplying by 50 speeds up the movement so it is equal to what it would be without Time.fixedDeltaTime
         _rb.velocity = _moveDir.normalized * finalMoveSpeed * (Time.fixedDeltaTime * 50); 
-    }
-
-    private void UseItem(ItemStack item){
-        if(item != null) item.useItem();
     }
     #endregion
 

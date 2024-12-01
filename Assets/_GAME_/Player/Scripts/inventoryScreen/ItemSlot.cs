@@ -66,11 +66,11 @@ public class ItemSlot
     {
         if (evt.button == 0)
         {
-            playerDataHandler.instance.inventory.setActive1(item);
+            playerDataHandler.instance.inventory.SetActive1(item);
         }
         else if (evt.button == 1)
         {
-            playerDataHandler.instance.inventory.setActive2(item);
+            playerDataHandler.instance.inventory.SetActive2(item);
         }
 
         // Stop the event from propagating to prevent the default button behavior.

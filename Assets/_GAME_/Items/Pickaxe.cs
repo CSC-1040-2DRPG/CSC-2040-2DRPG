@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pickaxe : MonoBehaviour
 {
+    public float damageAmount = 5;
     public string animationClipName;
     public float delay;
 
@@ -35,6 +36,19 @@ public class Pickaxe : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            GameObject enemy = collision.gameObject;
+
+            enemy.GetComponentInChildren<Enemy_health>().TakeDamage(damageAmount);
+        }
+
+        if (collision.gameObject.CompareTag("Spawner"))
+        {
+            GameObject Spawner = collision.gameObject;
+            Spawner.GetComponentInChildren<Spawner_health>().TakeDamage(damageAmount);
+
+        }
 
     }
 }

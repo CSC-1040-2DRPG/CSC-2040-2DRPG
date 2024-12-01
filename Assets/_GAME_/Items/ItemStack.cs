@@ -10,10 +10,13 @@ using UnityEngine.UIElements;
 [Serializable]
 public class ItemStack
 {
-    public enum ItemType {
-        Sword, //0
-        Pickaxe, //1
-        HealthPotion, //2
+    [Serializable]
+    public enum ItemType
+    {
+        None, //0
+        Sword, //1
+        Pickaxe,
+        HealthPotion,
         ManaPotion,
         Staff,
         Key
@@ -28,29 +31,33 @@ public class ItemStack
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
-    public ItemStack(ItemType itemType, int stackAmount, AudioManager audioManager) {
+    public ItemStack(ItemType itemType, int stackAmount, AudioManager audioManager)
+    {
         this.itemType = itemType;
         this.stackAmount = stackAmount;
         this.audioManager = audioManager;
     }
 
-    public ItemStack(ItemType itemType, AudioManager audioManager) : this(itemType, 1, audioManager){}
+    public ItemStack(ItemType itemType, AudioManager audioManager) : this(itemType, 1, audioManager) { }
 
     public void SetAudioManager(AudioManager manager)
     {
         audioManager = manager;
     }
 
-    public void useItem() {
-        if (audioManager == null) {
+    public void useItem()
+    {
+        if (audioManager == null)
+        {
             audioManager = GameObject.FindGameObjectWithTag("Audio")?.GetComponent<AudioManager>();
         }
         if (stackAmount < 1) return;
-        switch (itemType) {
+        switch (itemType)
+        {
             case ItemType.Sword:
                 playerDataHandler.instance.GetComponentInChildren<Sword>().Attack();
                 int randomSwordSound = UnityEngine.Random.Range(0, 2);
-                AudioClip[] swordSounds = {audioManager.swordsound1, audioManager.swordsound2, audioManager.swordsound3};
+                AudioClip[] swordSounds = { audioManager.swordsound1, audioManager.swordsound2, audioManager.swordsound3 };
                 audioManager.PlaySFX(swordSounds[randomSwordSound]);
                 break;
 
@@ -72,14 +79,25 @@ public class ItemStack
             case ItemType.Pickaxe:
                 playerDataHandler.instance.GetComponentInChildren<Pickaxe>().Swing();
                 break;
-            }
-            Debug.Log(itemType + " used! " + stackAmount + " remaining.");
-        }
 
-        public String getName() {
-            return itemType.ToString();
+            case ItemType.Key:
+                stackAmount--;
+                break;
         }
-        public String getFormattedName() {
-            return Regex.Replace(itemType.ToString(), "(?<!^)([A-Z])", " $1").Trim();
+        Debug.Log(itemType + " used! " + stackAmount + " remaining.");
+
+        if (stackAmount <= 0)
+        {
+            playerDataHandler.instance.inventory.RemoveItem(this);
         }
     }
+
+    public String getName()
+    {
+        return itemType.ToString();
+    }
+    public String getFormattedName()
+    {
+        return Regex.Replace(itemType.ToString(), "(?<!^)([A-Z])", " $1").Trim();
+    }
+}

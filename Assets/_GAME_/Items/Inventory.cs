@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,13 +9,13 @@ using UnityEngine;
 public class Inventory
 {
     [SerializeField] public List<ItemStack> itemList;
-    [SerializeField] public ItemStack activeItem1;
-    [SerializeField] public ItemStack activeItem2;
+    [SerializeField] public ItemStack.ItemType activeItem1;
+    [SerializeField] public ItemStack.ItemType activeItem2;
 
     public Inventory(){
         itemList = new List<ItemStack>();
-        activeItem1 = null;
-        activeItem2 = null;
+        activeItem1 = ItemStack.ItemType.None;
+        activeItem2 = ItemStack.ItemType.None;
     }
 
     public void AddItem(ItemStack item){
@@ -31,7 +32,7 @@ public class Inventory
         Debug.Log($"Inventory size: {itemList.Count}");
     }
 
-    public void RemoveItem(ItemStack.ItemType itemType, int countToRemove) {
+    public void DecreaseItem(ItemStack.ItemType itemType, int countToRemove) {
         for (int i = 0; i < itemList.Count; i++) {
             if (itemList[i].itemType == itemType) {
                 // Decrease the stack amount
@@ -46,6 +47,14 @@ public class Inventory
         Debug.Log("Item of type " + itemType + " not found in inventory.");
     }
 
+    public void DecreaseItem(ItemStack.ItemType itemType) {
+        DecreaseItem(itemType, 1);
+    }
+
+    public void RemoveItem(ItemStack item) {
+        itemList.Remove(item);
+    }
+
     public void RemoveItem(ItemStack.ItemType itemType) {
         // Find the first item in the inventory matching the specified type
         for (int i = 0; i < itemList.Count; i++) {
@@ -57,11 +66,28 @@ public class Inventory
         Debug.Log("Item of type " + itemType + " not found in inventory.");
     }
 
-    public void setActive1(ItemStack item){
-        activeItem1 = item;
+    public void UseItem(ItemStack.ItemType itemType){
+        foreach(ItemStack item in itemList){
+            if(item.itemType == itemType) {
+                item.useItem();
+                return;
+            }
+        }
     }
 
-    public void setActive2(ItemStack item){
-        activeItem2 = item;
+    public void SetActive1(ItemStack item){
+        activeItem1 = item.itemType;
+    }
+
+    public void SetActive2(ItemStack item){
+        activeItem2 = item.itemType;
+    }
+
+    public void UseActive1(){
+        UseItem(activeItem1);
+    }
+
+    public void UseActive2(){
+        UseItem(activeItem2);
     }
 }

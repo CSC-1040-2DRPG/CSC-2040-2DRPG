@@ -27,6 +27,7 @@ public class PlayerInvScreen : MonoBehaviour
     }
 
     void refreshScreen(){ 
+        playerDataHandler.instance.inventory.RemoveItem(ItemStack.ItemType.None);
         foreach(ItemStack i in playerDataHandler.instance.inventory.itemList){
             ItemSlot itemSlot = new ItemSlot(i, ItemSelectTemplate);
 
