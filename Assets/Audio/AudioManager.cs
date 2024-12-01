@@ -9,6 +9,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip swordsound2;
     public AudioClip swordsound3;
     public AudioClip potionsound;
+    public AudioClip hurtsound;
+    public AudioClip deathsound;
 
     public static AudioManager instance {get; private set;}
 

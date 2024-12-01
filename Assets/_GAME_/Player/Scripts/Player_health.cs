@@ -13,7 +13,12 @@ public class Player_health : MonoBehaviour, IDataPersistence
     public bool isDead;
     public static Action OnPlayerDeath;
     public static Action OnEnemyDeath;
+    public AudioManager audioManager;
 
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     void Start(){
         health = maxHealth;
@@ -28,15 +33,17 @@ public class Player_health : MonoBehaviour, IDataPersistence
        
         healthSlider.value = health;
 
-      
-        // Debug.Log("Health Updated: " + health);
-        //  Debug.Log("Health Slider Updated: " + healthSlider.value);
+        audioManager.PlaySFX(audioManager.hurtsound);
+        
 
-       
-    }
+            // Debug.Log("Health Updated: " + health);
+            //  Debug.Log("Health Slider Updated: " + healthSlider.value);
 
 
-    public void HealHealth (float heal)
+        }
+
+
+        public void HealHealth (float heal)
     {
         health = Mathf.Max(health + heal,0);
     }
@@ -48,8 +55,10 @@ public class Player_health : MonoBehaviour, IDataPersistence
 
         if (this.CompareTag("Player"))
         {
+            audioManager.PlaySFX(audioManager.deathsound);
             Time.timeScale = 0;
-            OnPlayerDeath?.Invoke(); //? means it is not invoked if it is null 
+            OnPlayerDeath?.Invoke(); //? means it is not invoked if it is null
+
         }
         else
         {
