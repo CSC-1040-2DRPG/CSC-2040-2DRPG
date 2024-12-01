@@ -20,16 +20,17 @@ public class ItemStack
 
     [SerializeField] public ItemType itemType;
     [SerializeField] public int stackAmount;
-    AudioManager audioManager;
+    private AudioManager audioManager;
 
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
-    public ItemStack(ItemType itemType, int stackAmount){
+    public ItemStack(ItemType itemType, int stackAmount, AudioManager audioManager){
         this.itemType = itemType;
         this.stackAmount = stackAmount;
+        this.audioManager = audioManager;
     }
 
     public ItemStack(ItemType itemType){
@@ -37,13 +38,28 @@ public class ItemStack
         this.stackAmount = 1;
     }
 
+    public void SetAudioManager(AudioManager manager)
+    {
+        audioManager = manager;
+    }
+
     public void useItem(){
-        if(stackAmount < 1) return;
+        if (audioManager == null){
+            audioManager = GameObject.FindGameObjectWithTag("Audio")?.GetComponent<AudioManager>();
+        }
+            if (stackAmount < 1) return;
         switch(itemType){
             case ItemType.Sword:
                 playerDataHandler.instance.GetComponentInChildren<Weapon_parent>().Attack();
                 //play sound effect
-                //audioManager.PlaySFX(audioManager.swordsound1);
+                if (audioManager != null)
+                {
+                    audioManager.PlaySFX(audioManager.swordswoosh);
+                }
+                else
+                {
+                    Debug.LogError("AudioManager is not assigned!");
+                }
                 break;
             //use health potion
             case ItemType.HealthPotion:

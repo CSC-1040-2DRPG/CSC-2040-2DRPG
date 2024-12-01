@@ -6,8 +6,9 @@ MonoImporter:
   defaultReferences:
   - SFXSource: {instanceID: 0}
   - swordsound1: {fileID: 8300000, guid: 77f8f0532490544dc988d9f6c9cd2df0, type: 3}
-  - swordsound2: {instanceID: 0}
-  - swordsound3: {instanceID: 0}
+  - swordsound2: {fileID: 8300000, guid: 4a69c7510a12e492ba819ea48a42188c, type: 3}
+  - swordsound3: {fileID: 8300000, guid: 387d379fd5ebe461eb994f2ea28521d0, type: 3}
+  - swordswoosh: {fileID: 8300000, guid: 188234c026d454fe48bfa2c1cf57b61a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

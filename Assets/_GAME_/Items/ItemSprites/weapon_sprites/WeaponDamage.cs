@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class WeaponDamage : MonoBehaviour
 {
-    
     public float damageAmount = 20;
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -22,11 +22,5 @@ public class WeaponDamage : MonoBehaviour
             Spawner.GetComponentInChildren<Spawner_health>().TakeDamage(damageAmount);
 
         }
-
     }
 }
-
-    
-
-
-

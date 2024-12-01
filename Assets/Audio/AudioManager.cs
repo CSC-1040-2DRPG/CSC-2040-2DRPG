@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] AudioSource SFXSource;
-
+    public AudioSource SFXSource;
+    public AudioClip swordswoosh;
     public AudioClip swordsound1;
     public AudioClip swordsound2;
     public AudioClip swordsound3;
 
-public void PlaySFX(AudioClip clip){
-
+    public void PlaySFX(AudioClip clip)
+    {
         SFXSource.PlayOneShot(clip);
-
     }
 }
