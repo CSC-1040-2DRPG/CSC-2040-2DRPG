@@ -7,7 +7,7 @@ public class spell : MonoBehaviour
     public int speed = 10;
     public float damage = 40f;
     public float ManaCost = 10f;
-    public float lifetime = 3f;
+    public float lifetime = 1f;
     private Animator animator;
     // Update is called once per frame
 
@@ -24,7 +24,7 @@ public class spell : MonoBehaviour
             {
                 animator.SetTrigger("fireball_anim");
             }
-            Destroy(gameObject,lifetime);
+            Destroy(gameObject, .833333333f);
         }
     }
   
@@ -34,10 +34,10 @@ public class spell : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             
-            other.GetComponent<Enemy_health>().TakeDamage(damage);
+            other.GetComponentInChildren<Enemy_health>().TakeDamage(damage);
 
             //destory spell after hitting
-            Destroy(gameObject);
+            Destroy(gameObject, .833333333f);
         }
     }
    
