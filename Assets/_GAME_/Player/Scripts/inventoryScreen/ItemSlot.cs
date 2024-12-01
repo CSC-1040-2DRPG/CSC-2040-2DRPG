@@ -77,7 +77,7 @@ public class ItemSlot
         evt.StopImmediatePropagation();
     }
 
-    private static Texture2D LoadTexture(string path)
+    public static Texture2D LoadTexture(string path)
     {
         byte[] fileData = File.ReadAllBytes(path);
         Texture2D texture = new Texture2D(2, 2); // Create a small temp texture.
