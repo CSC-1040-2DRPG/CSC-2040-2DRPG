@@ -21,6 +21,7 @@ public class EnemyManager : MonoBehaviour
     public void EnemyKilled() // when an enemy is killed
     {
         enemiesKilled++;
+        Debug.Log("Enemies Killed: " + enemiesKilled);
         if (enemiesKilled >= totalEnemies) // if all enemies are killed
         {
             if (door != null)
@@ -29,13 +30,6 @@ public class EnemyManager : MonoBehaviour
                 Destroy(door);
             }
         }
-
-    }
-
-
-    private void Update()
-    {
-        Debug.Log("Enemies Killed: " + enemiesKilled);
 
     }
 }

@@ -48,7 +48,9 @@ public class ItemSlot
 
         if (button != null && this.item != null)
         {
-            button.text = $"{this.item.getName()} : {this.item.stackAmount}";
+            button.text = this.item.getName();
+
+            if(item.stackAmount != 1) button.text += $" : {this.item.stackAmount}";
 
             // Register the PointerDown event and link it to the OnPointerDown method.
             button.RegisterCallback<PointerDownEvent>(OnPointerDown, TrickleDown.TrickleDown);
