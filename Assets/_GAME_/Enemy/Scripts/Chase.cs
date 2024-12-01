@@ -21,7 +21,7 @@ public class Chase : MonoBehaviour
     }
 
     // Detect collision with player
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -29,7 +29,7 @@ public class Chase : MonoBehaviour
             GameObject player = collision.gameObject;
             
             // call to TakeDamage function -> inside Player_health script 
-            player.GetComponentInChildren<Player_health>().TakeDamage(damage);
+            player.GetComponentInChildren<Player_health>().TakeDamage(damage * Time.deltaTime); //scale damage by frame time
         }
     }
 
