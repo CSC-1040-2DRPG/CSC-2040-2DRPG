@@ -3,7 +3,13 @@ guid: 5c19f49bfe20af5438b31af0809f7f50
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _rb: {instanceID: 0}
+  - _animator: {instanceID: 0}
+  - _spriteRenderer: {instanceID: 0}
+  - spellPrefab: {fileID: 3103741199998067326, guid: 38d37abb7ac973a4c930a5a7af90a449, type: 3}
+  - spellSpawnPoint: {instanceID: 0}
+  - lastBonfire: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

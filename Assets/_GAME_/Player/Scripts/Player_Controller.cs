@@ -48,6 +48,8 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
     private float finalMoveSpeed;
     private bool playerStop;
 
+    public GameObject spellPrefab;
+    public Transform spellSpawnPoint;
 
     public Transform lastBonfire;
 
@@ -57,6 +59,9 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
 
         Debug.Log("Updated last bonfire to: " + bonfire.position);
     }
+
+
+
 
     #endregion
 
@@ -78,7 +83,7 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
            ( playerDataHandler.instance.GetComponentInChildren<Player_health>().isDead == true && playerDataHandler.instance.GetComponentInChildren<Player_health>().health == 0f )
         {
     
-            _animator.CrossFade(Animator.StringToHash("player_death"), 0);
+            _animator.CrossFade(Animator.StringToHash("player_death"), 1);
 
            
             Debug.Log("player died");
@@ -87,12 +92,25 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
             GetComponent<Player_Controller>().enabled = false;
 
 
-
-
         }
+
+
+
+        // activate spell by pressing F
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            CastSpell();
+        }
+
+        
     }
 
-   
+    public void CastSpell()
+    {
+        Instantiate(spellPrefab, spellSpawnPoint.position, spellSpawnPoint.rotation);
+    }
+
+
 
     private void FixedUpdate() //For Physics System
     {
@@ -259,6 +277,8 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
 
     }
     #endregion
+
+  
 
 
 }
