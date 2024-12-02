@@ -9,13 +9,7 @@ public class Player_mana : MonoBehaviour, IDataPersistence
     public Slider manaSlider;
     public float maxMana = 100f;
     public float mana;
-    public AudioManager audioManager;
-
-    private void Awake()
-    {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-    }
-
+   
     void Start()
     {
         mana = maxMana;
@@ -25,7 +19,6 @@ public class Player_mana : MonoBehaviour, IDataPersistence
 
     public void UseMana(float ManaCost)
     {
-        audioManager.PlaySFX(audioManager.boomsound);
         mana = Mathf.Max(mana - ManaCost, 0);
         manaSlider.value = mana;
     }

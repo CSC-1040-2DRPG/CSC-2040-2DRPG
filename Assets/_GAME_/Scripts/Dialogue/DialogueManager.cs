@@ -85,7 +85,6 @@ public class DialogueManager : MonoBehaviour
     }
 
     public delegate void DialogueEnd();
-    public static event DialogueEnd OnDialogueEnd;
 
     private void ExitDialogueMode()
     {
