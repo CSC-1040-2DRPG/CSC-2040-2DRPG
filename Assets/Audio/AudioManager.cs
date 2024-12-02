@@ -12,6 +12,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip hurtsound;
     public AudioClip deathsound;
     public AudioClip swordswoosh;
+    public AudioClip bonfiresound;
+    public AudioClip chestsound;
+    public AudioClip boomsound;
 
     public static AudioManager instance {get; private set;}
 

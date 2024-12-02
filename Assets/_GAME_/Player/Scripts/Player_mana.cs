@@ -9,7 +9,7 @@ public class Player_mana : MonoBehaviour, IDataPersistence
     public Slider manaSlider;
     public float maxMana = 100f;
     public float mana;
-
+   
     void Start()
     {
         mana = maxMana;
