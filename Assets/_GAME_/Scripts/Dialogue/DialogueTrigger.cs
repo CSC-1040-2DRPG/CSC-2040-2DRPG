@@ -39,15 +39,7 @@ public class DialogueTrigger : MonoBehaviour
     }
 
     // Reset when dialogue ends
-    private void OnEnable()
-    {
-        DialogueManager.OnDialogueEnd += ResetDialogueTrigger;
-    }
 
-    private void OnDisable()
-    {
-        DialogueManager.OnDialogueEnd -= ResetDialogueTrigger;
-    }
 
     private void ResetDialogueTrigger()
     {
