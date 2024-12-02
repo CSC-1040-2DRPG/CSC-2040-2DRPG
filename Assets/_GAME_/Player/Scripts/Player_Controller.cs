@@ -97,11 +97,11 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
 
 
         // activate spell by pressing F
-        if (Input.GetKeyDown(KeyCode.F)) 
-            //&& playerDataHandler.instance.GetComponentInChildren<Player_mana>().mana >= playerDataHandler.instance.GetComponentInChildren<spell>().ManaCost)
-            //commented out causes error with the data persistance manager, spell stops working if this condition is applied and data persistance manager is active
+        if (Input.GetKeyDown(KeyCode.F)&& playerDataHandler.instance.GetComponentInChildren<Player_mana>().mana >= playerDataHandler.instance.GetComponentInChildren<spell>().ManaCost)
         {
+            
                 CastSpell();
+            
         }
 
         
@@ -109,8 +109,11 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
 
     public void CastSpell()
     {
+
+   
         Instantiate(spellPrefab, spellSpawnPoint.position, spellSpawnPoint.rotation);
- 
+   
+
     }
 
 
