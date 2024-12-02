@@ -15,7 +15,6 @@ MonoImporter:
   - bonfiresound: {fileID: 8300000, guid: 62769c81fc68c4e49a296af81e5de5e6, type: 3}
   - chestsound: {fileID: 8300000, guid: 3d03795279325431180e34a6bf06bf28, type: 3}
   - boomsound: {fileID: 8300000, guid: 02d17c58e0fd84eadbff0773f035ed1c, type: 3}
-  - stonebreak: {fileID: 8300000, guid: 4a7255484903745048cff484eaeae360, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

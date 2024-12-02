@@ -15,7 +15,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip bonfiresound;
     public AudioClip chestsound;
     public AudioClip boomsound;
-    public AudioClip stonebreak;
 
     public static AudioManager instance {get; private set;}
 
