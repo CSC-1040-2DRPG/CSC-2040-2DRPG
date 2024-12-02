@@ -60,7 +60,7 @@ public class ItemStack
 
             case ItemType.Pickaxe:
                 playerDataHandler.instance.GetComponentInChildren<Pickaxe>().Swing();
-                audioManager.PlaySFX(audioManager.swordswoosh);
+                AudioManager.instance.PlaySFX(AudioManager.instance.swordswoosh);
                 break;
 
             case ItemType.Key:
