@@ -24,8 +24,7 @@ public class Player_respwan : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             SavePlayerState(other);
-
-
+            audioManager.PlaySFX(audioManager.bonfiresound);
         }
     }
 

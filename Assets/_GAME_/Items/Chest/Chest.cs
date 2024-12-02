@@ -9,6 +9,12 @@ public class Chest : MonoBehaviour, IDataPersistence
     [SerializeField] public ItemStack itemName;
     [SerializeField] private Sprite openSprite;
     [SerializeField] private String chestID;
+    public AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     [ContextMenu("Generate guid for id")]
     private void GenerateGuid() 
@@ -41,7 +47,7 @@ public class Chest : MonoBehaviour, IDataPersistence
         if(opened) return;
         opened = true;
         gameObject.GetComponent<SpriteRenderer>().sprite = openSprite;
-
+        audioManager.PlaySFX(audioManager.chestsound);
         player.inventory.AddItem(itemName);
     }
 

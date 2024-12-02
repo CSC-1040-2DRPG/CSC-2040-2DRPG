@@ -9,8 +9,13 @@ public class spell : MonoBehaviour
     public float ManaCost = 10f;
     public float lifetime = 1f;
     private Animator animator;
+    public AudioManager audioManager;
     // Update is called once per frame
 
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     void Start()
     {
@@ -19,6 +24,7 @@ public class spell : MonoBehaviour
         {
             playerDataHandler.instance.GetComponentInChildren<Player_mana>().mana -= ManaCost;
             animator = GetComponent<Animator>();
+            audioManager.PlaySFX(audioManager.boomsound);
 
             if (animator != null)
             {
