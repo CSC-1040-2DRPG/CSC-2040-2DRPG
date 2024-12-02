@@ -14,5 +14,6 @@ public class DropChest : MonoBehaviour
     {
         GameObject chest = Instantiate(chestPrefab, transform.position, transform.rotation);
         chest.GetComponent<Chest>().itemName = new ItemStack(ItemStack.ItemType.Pickaxe);
+        
     }
 }
