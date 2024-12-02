@@ -55,7 +55,6 @@ public class Player_health : MonoBehaviour, IDataPersistence
 
         if (this.CompareTag("Player"))
         {
-            audioManager.PlaySFX(audioManager.deathsound);
             Time.timeScale = 0;
             OnPlayerDeath?.Invoke(); //? means it is not invoked if it is null
 

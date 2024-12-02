@@ -11,7 +11,12 @@ public class Player_respwan : MonoBehaviour
     private float playerHealth;
     public Transform respawnPoint;
     private float playerMana;
+    public AudioManager audioManager;
 
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     // activate checkpoint
     void OnTriggerEnter2D(Collider2D other)
@@ -77,9 +82,9 @@ public class Player_respwan : MonoBehaviour
     {
        if (playerDataHandler.instance.GetComponentInChildren<Player_health>().health <= 0)
        {
-           
-            
-                RespawnPlayer();
+
+            audioManager.PlaySFX(audioManager.deathsound);
+            RespawnPlayer();
             
        }
     }
