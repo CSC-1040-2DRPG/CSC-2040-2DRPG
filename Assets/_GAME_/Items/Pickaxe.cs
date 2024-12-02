@@ -36,6 +36,11 @@ public class Pickaxe : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Breakable"))
+        {
+            Destroy(collision.gameObject);
+        }
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
             GameObject enemy = collision.gameObject;

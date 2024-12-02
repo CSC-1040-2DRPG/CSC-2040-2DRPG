@@ -12,6 +12,7 @@ TagManager:
   - Spawner
   - Audio
   - Boulder
+  - Breakable
   layers:
   - Default
   - TransparentFX

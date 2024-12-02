@@ -24,41 +24,23 @@ public class ItemStack
 
     [SerializeField] public ItemType itemType;
     [SerializeField] public int stackAmount;
-    private AudioManager audioManager;
-
-    private void Awake()
-    {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-    }
-
-    public ItemStack(ItemType itemType, int stackAmount, AudioManager audioManager)
+    public ItemStack(ItemType itemType, int stackAmount)
     {
         this.itemType = itemType;
         this.stackAmount = stackAmount;
-        this.audioManager = audioManager;
     }
 
-    public ItemStack(ItemType itemType, AudioManager audioManager) : this(itemType, 1, audioManager) { }
-
-    public void SetAudioManager(AudioManager manager)
-    {
-        audioManager = manager;
-    }
-
+    public ItemStack(ItemType itemType) : this(itemType, 1) { }
     public void useItem()
     {
-        if (audioManager == null)
-        {
-            audioManager = GameObject.FindGameObjectWithTag("Audio")?.GetComponent<AudioManager>();
-        }
         if (stackAmount < 1) return;
         switch (itemType)
         {
             case ItemType.Sword:
                 playerDataHandler.instance.GetComponentInChildren<Sword>().Attack();
                 int randomSwordSound = UnityEngine.Random.Range(0, 2);
-                AudioClip[] swordSounds = { audioManager.swordsound1, audioManager.swordsound2, audioManager.swordsound3 };
-                audioManager.PlaySFX(swordSounds[randomSwordSound]);
+                AudioClip[] swordSounds = { AudioManager.instance.swordsound1, AudioManager.instance.swordsound2, AudioManager.instance.swordsound3 };
+                AudioManager.instance.PlaySFX(swordSounds[randomSwordSound]);
                 break;
 
             case ItemType.HealthPotion:
@@ -66,14 +48,14 @@ public class ItemStack
                 if (playerDataHandler.instance.GetComponentInChildren<Player_health>().health >= playerDataHandler.instance.GetComponentInChildren<Player_health>().maxHealth) break;
                 playerDataHandler.instance.GetComponentInChildren<Player_health>().HealHealth(10);
                 stackAmount--;
-                audioManager.PlaySFX(audioManager.potionsound);
+                AudioManager.instance.PlaySFX(AudioManager.instance.potionsound);
                 break;
 
             case ItemType.ManaPotion:
                 if (playerDataHandler.instance.GetComponentInChildren<Player_mana>().mana >= playerDataHandler.instance.GetComponentInChildren<Player_mana>().maxMana) break;
                 playerDataHandler.instance.GetComponentInChildren<Player_mana>().RecoverMana(10);
                 stackAmount--;
-                audioManager.PlaySFX(audioManager.potionsound);
+                AudioManager.instance.PlaySFX(AudioManager.instance.potionsound);
                 break;
 
             case ItemType.Pickaxe:

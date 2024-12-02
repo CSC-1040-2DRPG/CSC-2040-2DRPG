@@ -15,6 +15,11 @@ public class Chest : MonoBehaviour, IDataPersistence
     {
         chestID = Guid.NewGuid().ToString();
     }
+
+    public void SetGuid(String chestID) 
+    {
+        this.chestID = chestID;
+    }
     
     private bool opened = false;
     private bool playerInRange = false;

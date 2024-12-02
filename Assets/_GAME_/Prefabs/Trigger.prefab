@@ -219,3 +219,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossPrefab: {fileID: 7079430032011035319, guid: 4b5486d63fc065c43b74130022b0b3e1, type: 3}
   spawnLocation: {fileID: 1808978131593075592}
+  boulder: {fileID: 0}
+  self: {fileID: 8275763590371007868}
+  spawnDelay: 0
