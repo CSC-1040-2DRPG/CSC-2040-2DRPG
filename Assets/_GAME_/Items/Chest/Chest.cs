@@ -50,10 +50,14 @@ public class Chest : MonoBehaviour, IDataPersistence
 
     public void Open(){
         if(opened) return;
-        opened = true;
-        gameObject.GetComponent<SpriteRenderer>().sprite = openSprite;
+        SetOpened();
         audioManager.PlaySFX(audioManager.chestsound);
         player.inventory.AddItem(itemName);
+    }
+
+    public void SetOpened(){
+        opened = true;
+        gameObject.GetComponent<SpriteRenderer>().sprite = openSprite;
     }
 
     public void LoadData(GameData data) 

@@ -12,10 +12,18 @@ public class MainMenuUI : MonoBehaviour
 
     }
 
-   public void StartGameButton()
+    public void ContinueGameButton()
     {
-        SceneManager.LoadScene(0); //Scene index
+        SceneManager.LoadScene("HomeTown", LoadSceneMode.Single);
     }
+
+    public void NewGameButton()
+    {
+        DataPersistenceManager.instance.NewGame();
+        DataPersistenceManager.instance.SaveWithoutCheckingPersistenceObjects();
+        SceneManager.LoadScene("HomeTown", LoadSceneMode.Single);
+    }
+
     public void ExitGameButton()
     {
         Application.Quit(); //Closes application

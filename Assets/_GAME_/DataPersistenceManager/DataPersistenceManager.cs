@@ -104,6 +104,15 @@ public class DataPersistenceManager : MonoBehaviour
         Debug.Log("Game Saved!");
     }
 
+    public void SaveWithoutCheckingPersistenceObjects(){
+        if (this.gameData == null) 
+        {
+            Debug.LogWarning("No data was found. A New Game needs to be started before data can be saved.");
+            return;
+        }
+        dataHandler.Save(gameData);
+    }
+
     public void OnApplicationQuit(){
         SaveGame();
         Debug.Log("Application Quit!");
