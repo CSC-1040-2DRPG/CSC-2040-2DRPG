@@ -8,6 +8,9 @@ MonoImporter:
   - swordsound1: {fileID: 8300000, guid: 77f8f0532490544dc988d9f6c9cd2df0, type: 3}
   - swordsound2: {fileID: 8300000, guid: 4a69c7510a12e492ba819ea48a42188c, type: 3}
   - swordsound3: {fileID: 8300000, guid: 387d379fd5ebe461eb994f2ea28521d0, type: 3}
+  - potionsound: {fileID: 8300000, guid: 98bc63331718d4d67a4c1c7632127313, type: 3}
+  - hurtsound: {fileID: 8300000, guid: 68ad9271cd8c04d7480fb52f9a114703, type: 3}
+  - deathsound: {fileID: 8300000, guid: a8366ab12eaad4a7e92e22f556ce80bc, type: 3}
   - swordswoosh: {fileID: 8300000, guid: 188234c026d454fe48bfa2c1cf57b61a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
