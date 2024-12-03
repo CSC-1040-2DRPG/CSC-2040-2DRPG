@@ -244,10 +244,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5887801633096201374}
   - {fileID: 2910357816241239903}
   - {fileID: 6035753480512426116}
   - {fileID: 2464766304172329161}
-  - {fileID: 5887801633096201374}
   - {fileID: 6643523674599754877}
   m_Father: {fileID: 2038243620953687956}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1190,6 +1190,7 @@ MonoBehaviour:
   damageAmount: 5
   animationClipName: PickaxeSwing
   delay: 0.3333333
+  audioManager: {fileID: 0}
 --- !u!1 &7459112463793528002
 GameObject:
   m_ObjectHideFlags: 0
@@ -1296,6 +1297,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 0
   isDead: 0
+  audioManager: {fileID: 0}
 --- !u!1 &8511218333061121621
 GameObject:
   m_ObjectHideFlags: 0
@@ -1544,7 +1546,7 @@ MonoBehaviour:
   m_PanelSettings: {fileID: 11400000, guid: 23c8376f3f288ec4ba4fc12358a910c3, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 80657d42a429ecc4e8e9ac11eb08c87c, type: 3}
-  m_SortingOrder: 0
+  m_SortingOrder: 99
 --- !u!114 &6529895187371672129
 MonoBehaviour:
   m_ObjectHideFlags: 0
