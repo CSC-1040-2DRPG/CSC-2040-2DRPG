@@ -46,6 +46,8 @@ public class Pickaxe : MonoBehaviour
         if (collision.gameObject.CompareTag("Breakable"))
         {
             Destroy(collision.gameObject);
+            audioManager.PlaySFX(audioManager.stonebreak);
+
         }
 
         if (collision.gameObject.CompareTag("Enemy"))
