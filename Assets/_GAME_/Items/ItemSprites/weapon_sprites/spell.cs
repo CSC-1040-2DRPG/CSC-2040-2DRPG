@@ -20,7 +20,7 @@ public class spell : MonoBehaviour
     void Start()
     {
         // when spell is instiated mana gets updated & animation plays
-        if (playerDataHandler.instance.GetComponentInChildren<Player_mana>().mana < ManaCost)
+        if (playerDataHandler.instance.GetComponentInChildren<Player_mana>().manaSlider.value < ManaCost)
         {
             Destroy(gameObject);
             return;

@@ -31,6 +31,11 @@ public class Player_mana : MonoBehaviour, IDataPersistence
     public void Update()
     {
 
+        //recover mana gradully 
+        if (manaSlider.value < 100)
+        {
+            mana += 0.004f;
+        }
         
         if (manaSlider.value != mana)
        {
