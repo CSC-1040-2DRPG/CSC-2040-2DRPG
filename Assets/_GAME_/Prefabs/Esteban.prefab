@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 8124749674722117128}
-  maxHealth: 100
+  maxHealth: 150
   health: 0
 --- !u!1 &6362764671920327622
 GameObject:
@@ -430,11 +430,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 30
-  speed: 6
+  speed: 4.5
   health: {fileID: 0}
   rewardAmount: 50
   chaseRadius: 5
-  esteban: {fileID: 6362764671920327622}
+  audioManager: {fileID: 0}
 --- !u!61 &8007472550380414624
 BoxCollider2D:
   m_ObjectHideFlags: 0
