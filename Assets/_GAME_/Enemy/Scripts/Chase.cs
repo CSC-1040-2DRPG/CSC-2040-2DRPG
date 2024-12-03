@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.Examples;
 using UnityEngine;
 
 public class Chase : MonoBehaviour
@@ -46,6 +47,17 @@ public class Chase : MonoBehaviour
             if (enemyManager != null)
             {
                 enemyManager.EnemyKilled();
+            }
+            if (gameObject.name == "Esteban(Clone)") //only if the enemy is named Esteban
+            {
+                Win winScript = gameObject.GetComponent<Win>();
+                if (winScript != null)
+                {
+                    winScript.onWin();
+                    Debug.Log("Win");
+                }
+
+
             }
         }
     }

@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 953795182119543509}
   - component: {fileID: 915619040432017279}
   - component: {fileID: 8007472550380414624}
+  - component: {fileID: 8393313080621087920}
   m_Layer: 0
   m_Name: Esteban
   m_TagString: Enemy
@@ -285,7 +286,7 @@ Transform:
   m_GameObject: {fileID: 6362764671920327622}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5166, y: 39.501, z: 0}
+  m_LocalPosition: {x: -1.8812981, y: 37.644196, z: 0}
   m_LocalScale: {x: 0.3127094, y: 0.18544789, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -433,6 +434,7 @@ MonoBehaviour:
   health: {fileID: 0}
   rewardAmount: 50
   chaseRadius: 5
+  esteban: {fileID: 6362764671920327622}
 --- !u!61 &8007472550380414624
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -478,6 +480,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8393313080621087920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6362764671920327622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c54e2bb993602e54587b9a83165044f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winScene: Win
 --- !u!1 &6482870052726249601
 GameObject:
   m_ObjectHideFlags: 0
