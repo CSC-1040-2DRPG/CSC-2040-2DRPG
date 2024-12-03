@@ -22,6 +22,8 @@ public class GameOverUI : MonoBehaviour
 
     public void ReturnToMenu()
     {
+        DataPersistenceManager.instance.NewGame();
+        DataPersistenceManager.instance.SaveWithoutCheckingPersistenceObjects();
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single); //Returns to main menu
     }
 

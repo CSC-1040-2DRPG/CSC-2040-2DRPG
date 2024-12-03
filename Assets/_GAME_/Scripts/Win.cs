@@ -10,13 +10,20 @@ public class Win : MonoBehaviour
 
     public void onWin()
     {
-        GameObject player = GameObject.FindWithTag("Player");
-        if(player != null)
-        {
-            Destroy(player);
-        }
+        DestroyAllDontDestroyOnLoadObjects();
 
         SceneManager.LoadScene(winScene);
         Debug.Log("onWin");
+    }
+
+    public void DestroyAllDontDestroyOnLoadObjects()
+    {
+
+        var go = new GameObject("Sacrificial Lamb");
+        DontDestroyOnLoad(go);
+
+        foreach (var root in go.scene.GetRootGameObjects())
+            Destroy(root);
+
     }
 }
