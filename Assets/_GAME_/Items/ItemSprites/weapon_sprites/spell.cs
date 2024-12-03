@@ -20,32 +20,35 @@ public class spell : MonoBehaviour
     void Start()
     {
         // when spell is instiated mana gets updated & animation plays
-        if (playerDataHandler.instance.GetComponentInChildren<Player_mana>().mana >= ManaCost)
+        if (playerDataHandler.instance.GetComponentInChildren<Player_mana>().mana < ManaCost)
         {
-            playerDataHandler.instance.GetComponentInChildren<Player_mana>().mana -= ManaCost;
-            animator = GetComponent<Animator>();
-            audioManager.PlaySFX(audioManager.boomsound);
-
-            if (animator != null)
-            {
-                animator.SetTrigger("fireball_anim");
-            }
-            Destroy(gameObject, .833333333f);
+            Destroy(gameObject);
+            return;
         }
+
+        playerDataHandler.instance.GetComponentInChildren<Player_mana>().mana -= ManaCost;
+        animator = GetComponent<Animator>();
+        audioManager.PlaySFX(audioManager.boomsound);
+
+        if (animator != null)
+        {
+            animator.SetTrigger("fireball_anim");
+        }
+        Destroy(gameObject, .833333333f);
     }
-  
+
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
-            
+
             other.GetComponentInChildren<Enemy_health>().TakeDamage(damage);
 
             //destory spell after hitting
             Destroy(gameObject, .833333333f);
         }
     }
-   
+
 
 }
