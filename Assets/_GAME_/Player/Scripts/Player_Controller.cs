@@ -97,9 +97,11 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
 
 
         // activate spell by pressing F
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F)&& playerDataHandler.instance.GetComponentInChildren<Player_mana>().mana >= playerDataHandler.instance.GetComponentInChildren<spell>().ManaCost)
         {
-            CastSpell();
+            
+                CastSpell();
+            
         }
 
         
@@ -107,7 +109,11 @@ public class Player_Controller : MonoBehaviour, IDataPersistence
 
     public void CastSpell()
     {
+
+   
         Instantiate(spellPrefab, spellSpawnPoint.position, spellSpawnPoint.rotation);
+   
+
     }
 
 

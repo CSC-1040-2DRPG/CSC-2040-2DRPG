@@ -7,9 +7,15 @@ public class Pickaxe : MonoBehaviour
     public float damageAmount = 5;
     public string animationClipName;
     public float delay;
+    public AudioManager audioManager;
 
     //flag to block repeated attacks 
     private bool attackBlocked;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     public void Swing()
     {
@@ -20,7 +26,8 @@ public class Pickaxe : MonoBehaviour
         GetComponent<SpriteRenderer>().enabled = true;
         //trigger animation 
         GetComponent<Animator>().Play(animationClipName);
-        
+        audioManager.PlaySFX(audioManager.stonebreak);
+
         StartCoroutine(DelaySwing());
     }
 
