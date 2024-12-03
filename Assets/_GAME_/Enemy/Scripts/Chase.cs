@@ -13,12 +13,21 @@ public class Chase : MonoBehaviour
     public int rewardAmount = 50;
     public float chaseRadius = 5.0f;
     private EnemyManager enemyManager;
+    public AudioManager audioManager;
 
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         health = GetComponentInChildren<Enemy_health>();
+        if (gameObject.name == "Esteban(Clone)") //only if the enemy is named Esteban
+        {
+            audioManager.PlaySFX(audioManager.vineboom);
+        }
     }
 
     // Detect collision with player

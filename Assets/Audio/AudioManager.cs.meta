@@ -16,6 +16,7 @@ MonoImporter:
   - chestsound: {fileID: 8300000, guid: 3d03795279325431180e34a6bf06bf28, type: 3}
   - boomsound: {fileID: 8300000, guid: 02d17c58e0fd84eadbff0773f035ed1c, type: 3}
   - stonebreak: {fileID: 8300000, guid: 4a7255484903745048cff484eaeae360, type: 3}
+  - vineboom: {fileID: 8300000, guid: 8b0910dc63a624e349244ba610d45201, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
